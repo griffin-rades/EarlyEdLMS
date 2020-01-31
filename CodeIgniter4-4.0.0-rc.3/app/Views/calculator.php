@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 	<title>Calculator</title>
 </head>
@@ -25,7 +25,7 @@
 			.col{
 				text-align: center;
 			}
-			#calDisplay {
+			#calcDisplay {
 				font-size: 20pt;
 				font-weight: bold;
 				text-align: right;
@@ -37,79 +37,122 @@
 				background-color: lightGray;
 			}
 		</style>
-		<div class = "container"> 
+		<script>
+		var total;
+		var anotherNumber = true;
+		window.addEventListener("DOMContentLoaded", loaded);
+
+		function loaded(){
+			const keys = document.querySelector('.calcButtons');
+			var display = document.getElementById("calcDisplay");
+
+			keys.addEventListener("click", function(e){
+
+				if(e.target.classList.contains("operator")){
+					anotherNumber = false;
+					doOperation(e.target.value);
+				}
+				if(e.target.classList.contains("number")){
+					doNumber(e.target.value);
+				}
+				if(e.target.value == "clear"){
+					display.innerHTML = "0";
+				}
+
+			});
+			function doNumber(digit){
+				if(anotherNumber){
+					if(display.innerHTML == "0"){
+						display.innerHTML = digit;
+					}else{
+						display.innerHTML += digit;
+					}
+				}else{
+					display.innerHTML = digit;
+					anotherNumber = true;
+				}
+			}
+			function doOperation(operation){
+				display.innerHTML = operation;
+			}
+		}
+
+		</script>
+		<div class = "container">
 			<div class="row justify-content-center">
 				<div class="col-8">
-					<p id="calDisplay">0</p>
+					<p id="calcDisplay">0</p>
 				</div>
 			</div>
+			<div class="calcButtons">
 			<div class = "row justify-content-center">
 				<div class = "col-2">
 					<button type="button" value="clear" class="btn btn-danger btn-lg btn-block" >Clear</button>
 				</div>
 				<div class = "col-2">
-					<button type="button" value="negate" class="btn btn-primary btn-lg btn-block">Negate</button>
+					<button type="button" value="negate" class="btn btn-primary btn-lg btn-block operator">Negate</button>
 				</div>
 				<div class = "col-2">
-					<button type="button" value="%" class="btn btn-primary btn-lg btn-block">%</button>
+					<button type="button" value="%" class="btn btn-primary btn-lg btn-block operator">%</button>
 				</div>
 				<div class = "col-2">
-					<button type="button" value="÷" class="btn btn-primary btn-lg btn-block">÷</button>
+					<button type="button" value="÷" class="btn btn-primary btn-lg btn-block operator">÷</button>
 				</div>
 			</div>
 			<div class="row justify-content-center">
 				<div class="col-2">
-					<button type="button" value="7" class="btn btn-secondary btn-lg btn-block">7</button>
+					<button type="button" value="7" class="btn btn-secondary btn-lg btn-block number">7</button>
 				</div>
 				<div class="col-2">
-					<button type="button" value="8" class="btn btn-secondary btn-lg btn-block">8</button>
+					<button type="button" value="8" class="btn btn-secondary btn-lg btn-block number">8</button>
 				</div>
 				<div class="col-2">
-					<button type="button" value="9" class="btn btn-secondary btn-lg btn-block">9</button>
+					<button type="button" value="9" class="btn btn-secondary btn-lg btn-block number">9</button>
 				</div>
 				<div class="col-2">
-					<button type="button" value="×"class="btn btn-primary btn-lg btn-block">⨯</button>
-				</div>
-			</div>
-			<div class="row justify-content-center">
-				<div class="col-2">
-					<button type="button" value="4" class="btn btn-secondary btn-lg btn-block">4</button>
-				</div>
-				<div class="col-2">
-					<button type="button" value="5" class="btn btn-secondary btn-lg btn-block">5</button>
-				</div>
-				<div class="col-2">
-					<button type="button" value="6" class="btn btn-secondary btn-lg btn-block">6</button>
-				</div>
-				<div class="col-2">
-					<button type="button" value="−" class="btn btn-primary btn-lg btn-block">−</button>
+					<button type="button" value="×"class="btn btn-primary btn-lg btn-block operator">⨯</button>
 				</div>
 			</div>
 			<div class="row justify-content-center">
 				<div class="col-2">
-					<button type="button" value="1" class="btn btn-secondary btn-lg btn-block">1</button>
+					<button type="button" value="4" class="btn btn-secondary btn-lg btn-block number">4</button>
 				</div>
 				<div class="col-2">
-					<button type="button" value="2" class="btn btn-secondary btn-lg btn-block">2</button>
+					<button type="button" value="5" class="btn btn-secondary btn-lg btn-block number">5</button>
 				</div>
 				<div class="col-2">
-					<button type="button" value="3" class="btn btn-secondary btn-lg btn-block">3</button>
+					<button type="button" value="6" class="btn btn-secondary btn-lg btn-block number">6</button>
 				</div>
 				<div class="col-2">
-					<button type="button" value="+" class="btn btn-primary btn-lg btn-block">+</button>
+					<button type="button" value="−" class="btn btn-primary btn-lg btn-block operator">−</button>
+				</div>
+			</div>
+			<div class="row justify-content-center">
+				<div class="col-2">
+					<button type="button" value="1" class="btn btn-secondary btn-lg btn-block number">1</button>
+				</div>
+				<div class="col-2">
+					<button type="button" value="2" class="btn btn-secondary btn-lg btn-block number">2</button>
+				</div>
+				<div class="col-2">
+					<button type="button" value="3" class="btn btn-secondary btn-lg btn-block number">3</button>
+				</div>
+				<div class="col-2">
+					<button type="button" value="+" class="btn btn-primary btn-lg btn-block operator">+</button>
 				</div>
 			</div>
 			<div class="row justify-content-center">
 				<div class="col-4">
-					<button type="button" value="0" class="btn btn-secondary btn-lg btn-block">0</button>
+					<button type="button" value="0" class="btn btn-secondary btn-lg btn-block number">0</button>
 				</div>
 				<div class="col-2">
 					<button type="button" value="." class="btn btn-secondary btn-lg btn-block">.</button>
 				</div>
 				<div class="col-2">
-					<button type="button" value="=" class="btn btn-danger btn-lg btn-block">=</button>
+					<button type="button" value="=" class="btn btn-danger btn-lg btn-block operator">=</button>
 				</div>
 			</div>
+		</div>
 		</div>
 	</main>
 	<footer>
