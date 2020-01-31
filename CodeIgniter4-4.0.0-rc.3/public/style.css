@@ -1,0 +1,23 @@
+h1{
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 100px;
+}
+h6{
+  text-align: center;
+  margin-top: 40px;
+}
+.col{
+  text-align: center;
+}
+#calcDisplay {
+  font-size: 20pt;
+  font-weight: bold;
+  text-align: right;
+}
+.row{
+  margin-bottom: 10px;
+}
+body{
+  background-color: lightGray;
+}
