@@ -11,9 +11,21 @@ function loaded(){
     if(e.target.classList.contains("operator")){
       anotherNumber = false;
       var xhr = new XMLHttpRequest();
-      xhr.open("POST", "calculation.php?num=" + display.innerHTML + "op=" + e.target.value, true);
+      xhr.addEventListener("load", responseReceivedHandler);
+      xhr.responseType = "json";
+      xhr.open("GET", "calculation.php?num=" + display.innerHTML + "op=" + e.target.value, true);
       xhr.send();
+
+      function responseReceivedHandler() {
+        if (this.status === 200) {
+          var response = this.response;
+
+          console.log(response);
+        }
+      }
+      doOperation(e.target.value);
     }
+
     if(e.target.classList.contains("number")){
       doNumber(e.target.value);
     }
@@ -33,5 +45,8 @@ function loaded(){
       display.innerHTML = digit;
       anotherNumber = true;
     }
+  }
+  function doOperation(operator){
+    display.innerHTML = operator;
   }
 }

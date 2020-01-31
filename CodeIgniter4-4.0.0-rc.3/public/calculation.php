@@ -1,12 +1,15 @@
 <? php
+$total = 0;
+$doCalc = false;
+$firstNum = $_GET["num"];
+// if($_REQUEST["op"] != "="){
+//   $num = $_REQUEST["num"];
+//   $operation = $_REQUEST["op"];
+//
+// }else{
+//   $num2 = $_REQUEST["num"];
+// }
 
-if($_REQUEST["op"] != "="){
-  $firstNum = $_REQUEST["num"];
-  $operation = $_REQUEST["op"];
-}else{
-  $secondNum = $_REQUEST["num"];
-}
 
-
-echo $firstNum;
+echo json_encode($firstNum);
 ?>
