@@ -29,6 +29,7 @@ function loaded(){
     if(e.target.classList.contains("number")){
       doNumber(e.target.value);
     }
+    
     if(e.target.value == "clear"){
       display.innerHTML = "0";
     }

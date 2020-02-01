@@ -12,4 +12,4 @@ $firstNum = $_GET["num"];
 
 
 echo json_encode($firstNum);
-?>
+?> 

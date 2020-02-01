@@ -14,7 +14,7 @@
 		<h1 > A Simple Calculator </h1>
 	</header>
 	<main>
-		<div class = "container">
+		<div class="container">
 			<div class="row justify-content-center">
 				<div class="col-8">
 					<p id="calcDisplay">0</p>

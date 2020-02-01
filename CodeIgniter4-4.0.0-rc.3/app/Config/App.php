@@ -21,7 +21,7 @@ class App extends BaseConfig
 	| environments.
 	|
 	*/
-	public $baseURL = 'http://cs.smumn.edu/student/grades/ci4/CodeIgniter4-4.0.0-rc.3';
+	public $baseURL = 'http://cs.smumn.edu/student/grades/ci4/CodeIgniter4-4.0.0-rc.3/public/';
 
 	/*
 	|--------------------------------------------------------------------------
