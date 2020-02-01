@@ -18,8 +18,9 @@ function loaded(){
 
       function responseReceivedHandler() {
         if (this.status === 200) {
-          var response = this.response;
+          var response = JSON.parse(this.response);
 
+          // display.innerHTML = response;
           console.log(response);
         }
       }
