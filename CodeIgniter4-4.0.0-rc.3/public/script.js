@@ -1,6 +1,6 @@
 var anotherNumber = true;
 window.addEventListener("DOMContentLoaded", loaded);
-var currentValue = "";
+var currentTotal = "";
 var previousOP = "";
 
 function loaded(){
@@ -15,20 +15,19 @@ function loaded(){
       $.ajax({
         type: "POST",
         url: "calculation.php",
-        data: {operation: e.target.value, number: display.innerHTML, current: currentValue, previous: previousOP},
+        data: {operation: e.target.value, number: display.innerHTML, current: currentTotal, previous: previousOP},
         dataType:'JSON',
         success: function(response){
-          currentValue = response.answer;
-          display.innerHTML = currentValue;
+            previousOP = response.oper;
+            currentTotal= response.answer;
+            display.innerHTML = currentTotal;
         }
       });
-
-      if(e.target.value == "="){
-        currentValue = "";
-        previous = "";
+      
+      if(previousOP == "="){
+        currentTotal = "";
       }
 
-      previousOP = e.target.value;
       doOperation(e.target.value);
     }
 
@@ -36,10 +35,8 @@ function loaded(){
       if(display.innerHTML.includes("-")){
         display.innerHTML.replace("-", "");
       }else{
-        if(display.innerHTML == "0"){
-
-        }else{
-          display.innerHTML = "-" + display.innerHTML;
+        if(display.innerHTML != "0"){
+            display.innerHTML = "-" + display.innerHTML;
         }
       }
     }
@@ -57,7 +54,9 @@ function loaded(){
     }
 
     if(e.target.value == "clear"){
-      currentValue = "";
+      currentTotal = "";
+      previousOP = "";
+
       display.innerHTML = "0";
     }
   });
@@ -74,6 +73,7 @@ function loaded(){
       anotherNumber = true;
     }
   }
+  
   function doOperation(operator){
     display.innerHTML = operator;
   }
