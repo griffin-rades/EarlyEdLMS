@@ -9,6 +9,25 @@ function loaded(){
 
   keys.addEventListener("click", function(e){
 
+    if(e.target.classList.contains("operator") && e.target.classList.contains("equal")){
+      anotherNumber = true;
+
+      $.ajax({
+        type: "POST",
+        url: "calculation.php",
+        data: {operation: e.target.value, number: display.innerHTML, current: currentTotal, previous: previousOP},
+        dataType:'JSON',
+        success: function(response){
+            previousOP = "";
+            currentTotal = response.answer;
+            display.innerHTML = currentTotal;
+            currentTotal = "";
+        }
+      });
+
+      doOperation(e.target.value);
+    }
+
     if(e.target.classList.contains("operator")){
       anotherNumber = false;
 
@@ -19,14 +38,10 @@ function loaded(){
         dataType:'JSON',
         success: function(response){
             previousOP = response.oper;
-            currentTotal= response.answer;
+            currentTotal = response.answer;
             display.innerHTML = currentTotal;
         }
       });
-      
-      if(previousOP == "="){
-        currentTotal = "";
-      }
 
       doOperation(e.target.value);
     }
@@ -73,7 +88,7 @@ function loaded(){
       anotherNumber = true;
     }
   }
-  
+
   function doOperation(operator){
     display.innerHTML = operator;
   }

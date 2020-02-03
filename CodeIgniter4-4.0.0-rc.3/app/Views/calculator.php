@@ -86,7 +86,7 @@
 					<button type="button" value="." class="btn btn-secondary btn-lg btn-block">.</button>
 				</div>
 				<div class="col-2">
-					<button type="button" value="=" class="btn btn-danger btn-lg btn-block operator">=</button>
+					<button type="button" value="=" class="btn btn-danger btn-lg btn-block operator equal">=</button>
 				</div>
 			</div>
 		</div>
