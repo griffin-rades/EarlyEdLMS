@@ -29,10 +29,10 @@ function doMath($operator, $cval, $number, $f){
   }elseif($operator == "-"){
     if($f){
       $cval = $number;
-      echo json_encode(array("answer"=>$cval));
+      echo json_encode(array("answer"=>$cval, "oper"=>$operator));
     }else{
       $cval = $cval - $number;
-      echo json_encode(array("answer"=>$cval));
+      echo json_encode(array("answer"=>$cval, "oper"=>$operator));
     }
   }elseif($operator == "*"){
     if($f){
@@ -45,10 +45,10 @@ function doMath($operator, $cval, $number, $f){
   }elseif($operator == "/"){
     if($f){
       $cval = $number;
-      echo json_encode(array("answer"=>$cval));
+      echo json_encode(array("answer"=>$cval, "oper"=>$operator));
     }else{
       $cval = $cval / $number;
-      echo json_encode(array("answer"=>$cval));
+      echo json_encode(array("answer"=>$cval, "oper"=>$operator));
     }
   }elseif($operator == "%"){
     if($f){
