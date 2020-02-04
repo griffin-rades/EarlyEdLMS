@@ -25,7 +25,7 @@ function loaded(){
         }
       });
 
-      doOperation(e.target.value);
+      //doOperation(e.target.value);
     }
 
     if(e.target.classList.contains("operator")){
@@ -43,7 +43,7 @@ function loaded(){
         }
       });
 
-      doOperation(e.target.value);
+      //doOperation(e.target.value);
     }
 
     if(e.target.classList.contains("negate")){
