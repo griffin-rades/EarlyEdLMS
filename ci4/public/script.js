@@ -9,6 +9,10 @@ function loaded(){
 
   keys.addEventListener("click", function(e){
       
+      if(e.target.classList.contains("number")){
+        doNumber(e.target.value);
+      }
+      
       if(e.target.value = "+"){
           $.ajax({
             type: "POST",
@@ -39,10 +43,6 @@ function loaded(){
       }else{
         display.innerHTML += ".";
       }
-    }
-
-    if(e.target.classList.contains("number")){
-      doNumber(e.target.value);
     }
 
     if(e.target.value == "clear"){
