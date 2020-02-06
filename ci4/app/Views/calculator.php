@@ -24,16 +24,16 @@
 			<div class="calcButtons">
 			<div class = "row justify-content-center">
 				<div class = "col-2">
-					<button type="button" value="clear" class="btn btn-danger btn-lg btn-block" >Clear</button>
+					<button type="button" value="clear" id="clear" class="btn btn-danger btn-lg btn-block" >Clear</button>
 				</div>
 				<div class = "col-2">
-					<button type="button" value="negate" class="btn btn-primary btn-lg btn-block negate">Negate</button>
+					<button type="button" value="negate" id="negate" class="btn btn-primary btn-lg btn-block">Negate</button>
 				</div>
 				<div class = "col-2">
-					<button type="button" value="%" class="btn btn-primary btn-lg btn-block operator">%</button>
+					<button type="button" value="%" id="percent" class="btn btn-primary btn-lg btn-block">%</button>
 				</div>
 				<div class = "col-2">
-					<button type="button" value="/" class="btn btn-primary btn-lg btn-block operator">÷</button>
+					<button type="button" value="/" id="divide" class="btn btn-primary btn-lg btn-block">÷</button>
 				</div>
 			</div>
 			<div class="row justify-content-center">
@@ -47,7 +47,7 @@
 					<button type="button" value="9" class="btn btn-secondary btn-lg btn-block number">9</button>
 				</div>
 				<div class="col-2">
-					<button type="button" value="*"class="btn btn-primary btn-lg btn-block operator">⨯</button>
+					<button type="button" value="*" id="multiply" class="btn btn-primary btn-lg btn-block">⨯</button>
 				</div>
 			</div>
 			<div class="row justify-content-center">
@@ -61,7 +61,7 @@
 					<button type="button" value="6" class="btn btn-secondary btn-lg btn-block number">6</button>
 				</div>
 				<div class="col-2">
-					<button type="button" value="-" class="btn btn-primary btn-lg btn-block operator">−</button>
+					<button type="button" value="-" id="subtract" class="btn btn-primary btn-lg btn-block ">−</button>
 				</div>
 			</div>
 			<div class="row justify-content-center">
@@ -83,10 +83,10 @@
 					<button type="button" value="0" class="btn btn-secondary btn-lg btn-block number">0</button>
 				</div>
 				<div class="col-2">
-					<button type="button" value="." class="btn btn-secondary btn-lg btn-block">.</button>
+					<button type="button" value="." id="decimal" class="btn btn-secondary btn-lg btn-block">.</button>
 				</div>
 				<div class="col-2">
-					<button type="button" value="=" class="btn btn-danger btn-lg btn-block operator equal">=</button>
+					<button type="button" value="=" id="equal" class="btn btn-danger btn-lg btn-block operator equal">=</button>
 				</div>
 			</div>
 		</div>

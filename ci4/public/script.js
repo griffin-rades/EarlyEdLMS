@@ -1,84 +1,143 @@
-var anotherNumber = true;
 window.addEventListener("DOMContentLoaded", loaded);
-var previousOP = "";
-var $currentTotal = 0;
+var currentTotal = 0;
+previousOp = "";
+numNext = true;
 
 function loaded(){
-  const keys = document.querySelector('.calcButtons');
   var display = document.getElementById("calcDisplay");
+  var numberButtons = document.getElementsByClassName("number");
+  const addButton = document.getElementById("addition");
+  const subtractButton = document.getElementById("subtract");
+  const mutlButton = document.getElementById("multiply");
+  const divideButton = document.getElementById("divide");
+  const equalButton = document.getElementById("equal");
+  const percentButton = document.getElementById("percent");
+  const decimalButton = document.getElementById("decimal");
+  const clearButton = document.getElementById("clear");
 
-  var display = document.getElementById("calcDisplay");
-
-  addButton.addEventListener("click", function(){
-      anotherNumber = true;
+  for(var i = 0; i < numberButtons.length; i++){
+    numberButtons[i].addEventListener("click", function(e){
       $.ajax({
         type: "POST",
-        url: "calculate/add/" + display.innerHTML + "/" + currentTotal,
+        url: "calculate/number/" + e.target.value,
         //data: {number: display.innerHTML, total: $currentTotal},
         dataType:'JSON',
         success: function(response){
-            currentTotal += response.answer;
-            display.innerHTML = currentTotal;
-            console.log(currentTotal);
+          currentTotal = response.answer;
+          display.innerHTML = currentTotal;
+          console.log(currentTotal);
         }
       });
-  });
-  
-  keys.addEventListener("click", function(e){
-      
-      if(e.target.classList.contains("number")){
-        doNumber(e.target.value);
-      }
-      
-      if(e.target.value = "+"){
-          $.ajax({
-            type: "POST",
-            url: "calculate/add/" + display.innerHTML + "/" + $currentTotal,
-            //data: {number: display.innerHTML, total: $currentTotal},
-            dataType:'JSON',
-            success: function(response){
-                $currentTotal += response.answer;
-                display.innerHTML = $currentTotal;
-            }
-          });
-      }
-    
 
-    if(e.target.classList.contains("negate")){
-      if(display.innerHTML.includes("-")){
-        display.innerHTML.replace("-", "");
-      }else{
-        if(display.innerHTML != "0"){
-            display.innerHTML = "-" + display.innerHTML;
+      if(numNext){
+        if(display.innerHTML == "0"){
+          display.innerHTML = e.target.value;
+        }else{
+          display.innerHTML += e.target.value;
         }
-      }
-    }
-
-    if(e.target.value == "."){
-      if(display.innerHTML.includes(".")){
-
       }else{
-        display.innerHTML += ".";
+        display.innerHTML = e.target.value;
       }
-    }
+    });
+  }
 
-    if(e.target.value == "clear"){
-      previousOP = "";
-
-      display.innerHTML = "0";
-    }
+  addButton.addEventListener("click", function(){
+    $.ajax({
+      type: "POST",
+      url: "calculate/add/" + display.innerHTML + "/" + currentTotal,
+      //data: {number: display.innerHTML, total: $currentTotal},
+      dataType:'JSON',
+      success: function(response){
+        currentTotal = response.answer;
+        display.innerHTML = "+";
+        previousOp = "+";
+        numNext = false;
+      }
+    });
   });
 
-  function doNumber(digit){
-    if(anotherNumber){
-      if(display.innerHTML == "0"){
-        display.innerHTML = digit;
-      }else{
-        display.innerHTML += digit;
+  mutlButton.addEventListener("click", function(){
+    $.ajax({
+      type: "POST",
+      url: "calculate/add/" + display.innerHTML + "/" + currentTotal,
+      //data: {number: display.innerHTML, total: $currentTotal},
+      dataType:'JSON',
+      success: function(response){
+        currentTotal = response.answer;
+        display.innerHTML = currentTotal;
+        console.log(currentTotal);
       }
-    }else{
-      display.innerHTML = digit;
-      anotherNumber = true;
-    }
-  }
+    });
+  });
+
+  divideButton.addEventListener("click", function(){
+    $.ajax({
+      type: "POST",
+      url: "calculate/add/" + display.innerHTML + "/" + currentTotal,
+      //data: {number: display.innerHTML, total: $currentTotal},
+      dataType:'JSON',
+      success: function(response){
+        currentTotal = response.answer;
+        display.innerHTML = currentTotal;
+        console.log(currentTotal);
+      }
+    });
+  });
+
+  percentButton.addEventListener("click", function(){
+    $.ajax({
+      type: "POST",
+      url: "calculate/add/" + display.innerHTML + "/" + currentTotal,
+      //data: {number: display.innerHTML, total: $currentTotal},
+      dataType:'JSON',
+      success: function(response){
+        currentTotal = response.answer;
+        display.innerHTML = currentTotal;
+        console.log(currentTotal);
+      }
+    });
+  });
+
+  decimalButton.addEventListener("click", function(){
+    $.ajax({
+      type: "POST",
+      url: "calculate/add/" + display.innerHTML + "/" + currentTotal,
+      //data: {number: display.innerHTML, total: $currentTotal},
+      dataType:'JSON',
+      success: function(response){
+        currentTotal = response.answer;
+        display.innerHTML = currentTotal;
+        console.log(currentTotal);
+      }
+    });
+  });
+
+  equalButton.addEventListener("click", function(){
+    $.ajax({
+      type: "POST",
+      url: "calculate/equal/" + currentTotal + "/" + previousOp + "/" + display.innerHTML,
+      dataType:'JSON',
+      success: function(response){
+        currentTotal = response.answer;
+        display.innerHTML = currentTotal;
+        numNext = false;
+        currentTotal = 0;
+        previousOp = "";
+      }
+    });
+  });
+
+  clearButton.addEventListener("click", function(){
+    $.ajax({
+      type: "POST",
+      url: "calculate/clear",
+      dataType:'JSON',
+      success: function(response){
+        console.log("Cleared");
+      }
+    });
+    numNext = true;
+    currentTotal = 0;
+    display.innerHTML = 0;
+  });
 }
