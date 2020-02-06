@@ -75,7 +75,7 @@
 					<button type="button" value="3" class="btn btn-secondary btn-lg btn-block number">3</button>
 				</div>
 				<div class="col-2">
-					<button type="button" value="+" class="btn btn-primary btn-lg btn-block operator">+</button>
+					<button type="button" value="+" id="addition" class="btn btn-primary btn-lg btn-block">+</button>
 				</div>
 			</div>
 			<div class="row justify-content-center">

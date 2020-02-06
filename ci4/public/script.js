@@ -7,6 +7,23 @@ function loaded(){
   const keys = document.querySelector('.calcButtons');
   var display = document.getElementById("calcDisplay");
 
+  var display = document.getElementById("calcDisplay");
+
+  addButton.addEventListener("click", function(){
+      anotherNumber = true;
+      $.ajax({
+        type: "POST",
+        url: "calculate/add/" + display.innerHTML + "/" + currentTotal,
+        //data: {number: display.innerHTML, total: $currentTotal},
+        dataType:'JSON',
+        success: function(response){
+            currentTotal += response.answer;
+            display.innerHTML = currentTotal;
+            console.log(currentTotal);
+        }
+      });
+  });
+  
   keys.addEventListener("click", function(e){
       
       if(e.target.classList.contains("number")){
