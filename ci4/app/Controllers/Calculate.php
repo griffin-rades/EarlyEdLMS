@@ -11,13 +11,19 @@ class Calculate extends BaseController
 		//$this->session->set('current', $currentScreen);
 	}
 
-	public function add($numToAdd, $currentTotal = 0){
+	public function add($numToAdd, $currentTotal){
 		$currentTotal += $numToAdd;
 
 		return $this->response->setJSON(array("answer"=>$currentTotal));
 	}
-	public function subtract(){
-
+	
+	public function subtract($numToSubtract, $currentTotal, $first = false){
+		if$first){
+			$currentTotal = $numToSubtract;
+		}else{
+			$currentTotal -= $numToSubtract;
+		}
+		return $this->response->setJSON(array("answer"=>$currentTotal));
 	}
 	public function multiply(){
 
@@ -26,7 +32,7 @@ class Calculate extends BaseController
 
 	}
 	public function equal($total, $prevOp, $number){
-		if($prevOp == "+"){
+		if($prevOp == "add"){
 			$total += $number;
 		}
 

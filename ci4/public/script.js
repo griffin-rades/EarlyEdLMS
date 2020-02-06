@@ -1,7 +1,8 @@
 window.addEventListener("DOMContentLoaded", loaded);
 var currentTotal = 0;
-previousOp = "";
-numNext = true;
+var first = true;
+var previousOp = "";
+var numNext = true;
 
 function loaded(){
   var display = document.getElementById("calcDisplay");
@@ -20,7 +21,6 @@ function loaded(){
       $.ajax({
         type: "POST",
         url: "calculate/number/" + e.target.value,
-        //data: {number: display.innerHTML, total: $currentTotal},
         dataType:'JSON',
         success: function(response){
           currentTotal = response.answer;
@@ -45,22 +45,49 @@ function loaded(){
     $.ajax({
       type: "POST",
       url: "calculate/add/" + display.innerHTML + "/" + currentTotal,
-      //data: {number: display.innerHTML, total: $currentTotal},
       dataType:'JSON',
       success: function(response){
         currentTotal = response.answer;
         display.innerHTML = "+";
-        previousOp = "+";
+        previousOp = "add";
         numNext = false;
       }
     });
   });
 
+  subtractButton.addEventListener("click", function(){
+    if(first){
+      $.ajax({
+        type: "POST",
+        url: "calculate/subtract/" + display.innerHTML + "/" + currentTotal + "/" + first,
+        dataType:'JSON',
+        success: function(response){
+          currentTotal = response.answer;
+          display.innerHTML = "-";
+          previousOp = "subtract";
+          numNext = false;
+        }
+      });
+      first = false;
+    }else{
+      $.ajax({
+        type: "POST",
+        url: "calculate/subtract/" + display.innerHTML + "/" + currentTotal,
+        dataType:'JSON',
+        success: function(response){
+          currentTotal = response.answer;
+          display.innerHTML = "-";
+          previousOp = "subtract";
+          numNext = false;
+        }
+      });
+    }
+  });
+
   mutlButton.addEventListener("click", function(){
     $.ajax({
       type: "POST",
-      url: "calculate/add/" + display.innerHTML + "/" + currentTotal,
-      //data: {number: display.innerHTML, total: $currentTotal},
+      url: "calculate/multiply/" + display.innerHTML + "/" + currentTotal,
       dataType:'JSON',
       success: function(response){
         currentTotal = response.answer;
@@ -139,5 +166,6 @@ function loaded(){
     numNext = true;
     currentTotal = 0;
     display.innerHTML = 0;
+    first = true;
   });
 }
