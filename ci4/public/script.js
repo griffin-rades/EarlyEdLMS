@@ -1,50 +1,27 @@
 var anotherNumber = true;
 window.addEventListener("DOMContentLoaded", loaded);
-var currentTotal = "";
 var previousOP = "";
+var $currentTotal = 0;
 
 function loaded(){
   const keys = document.querySelector('.calcButtons');
   var display = document.getElementById("calcDisplay");
 
   keys.addEventListener("click", function(e){
-
-    if(e.target.classList.contains("operator") && e.target.classList.contains("equal")){
-      anotherNumber = true;
-
-      $.ajax({
-        type: "POST",
-        url: "calculation.php",
-        data: {operation: e.target.value, number: display.innerHTML, current: currentTotal, previous: previousOP},
-        dataType:'JSON',
-        success: function(response){
-            previousOP = "";
-            currentTotal = response.answer;
-            display.innerHTML = currentTotal;
-            currentTotal = "";
-        }
-      });
-
-      //doOperation(e.target.value);
-    }
-
-    if(e.target.classList.contains("operator")){
-      anotherNumber = false;
-
-      $.ajax({
-        type: "POST",
-        url: "calculation.php",
-        data: {operation: e.target.value, number: display.innerHTML, current: currentTotal, previous: previousOP},
-        dataType:'JSON',
-        success: function(response){
-            previousOP = response.oper;
-            currentTotal = response.answer;
-            display.innerHTML = currentTotal;
-        }
-      });
-
-      //doOperation(e.target.value);
-    }
+      
+      if(e.target.value = "+"){
+          $.ajax({
+            type: "POST",
+            url: "calculate/add/" + display.innerHTML + "/" + $currentTotal,
+            //data: {number: display.innerHTML, total: $currentTotal},
+            dataType:'JSON',
+            success: function(response){
+                $currentTotal += response.answer;
+                display.innerHTML = $currentTotal;
+            }
+          });
+      }
+    
 
     if(e.target.classList.contains("negate")){
       if(display.innerHTML.includes("-")){
@@ -69,7 +46,6 @@ function loaded(){
     }
 
     if(e.target.value == "clear"){
-      currentTotal = "";
       previousOP = "";
 
       display.innerHTML = "0";
@@ -87,9 +63,5 @@ function loaded(){
       display.innerHTML = digit;
       anotherNumber = true;
     }
-  }
-
-  function doOperation(operator){
-    display.innerHTML = operator;
   }
 }
