@@ -15,6 +15,7 @@ function loaded(){
   const percentButton = document.getElementById("percent");
   const decimalButton = document.getElementById("decimal");
   const clearButton = document.getElementById("clear");
+  const negateButton = document.getElementById("negate");
 
   for(var i = 0; i < numberButtons.length; i++){
     numberButtons[i].addEventListener("click", function(e){
@@ -37,6 +38,7 @@ function loaded(){
         }
       }else{
         display.innerHTML = e.target.value;
+        numNext = true;
       }
     });
   }
@@ -110,19 +112,18 @@ function loaded(){
             }
           });
       }
-    
+
   });
 
   divideButton.addEventListener("click", function(){
     $.ajax({
       type: "POST",
-      url: "calculate/add/" + display.innerHTML + "/" + currentTotal,
-      //data: {number: display.innerHTML, total: $currentTotal},
+      url: "calculate/divide/" + display.innerHTML + "/" + currentTotal,
       dataType:'JSON',
       success: function(response){
         currentTotal = response.answer;
         display.innerHTML = "/";
-        previousOp = "/";
+        previousOp = "divide";
         numNext = false;
       }
     });
@@ -131,29 +132,28 @@ function loaded(){
   percentButton.addEventListener("click", function(){
     $.ajax({
       type: "POST",
-      url: "calculate/add/" + display.innerHTML + "/" + currentTotal,
-      //data: {number: display.innerHTML, total: $currentTotal},
+      url: "calculate/percent/" + display.innerHTML,
       dataType:'JSON',
       success: function(response){
-        currentTotal = response.answer;
-        display.innerHTML = currentTotal;
-        console.log(currentTotal);
+        currentTotal = 0;
+        display.innerHTML = response.answer;;
+        numNext = false;
       }
     });
   });
 
   decimalButton.addEventListener("click", function(){
-    $.ajax({
-      type: "POST",
-      url: "calculate/add/" + display.innerHTML + "/" + currentTotal,
-      //data: {number: display.innerHTML, total: $currentTotal},
-      dataType:'JSON',
-      success: function(response){
-        currentTotal = response.answer;
-        display.innerHTML = currentTotal;
-        console.log(currentTotal);
-      }
-    });
+    if(!display.innerHTML.includes(".")){
+      display.innerHTML += ".";
+    }
+  });
+
+  negateButton.addEventListener("click", function(){
+    if(!display.innerHTML.includes("-") && display.innerHTML != 0){
+      display.innerHTML = "-" + display.innerHTML;
+    }else if(display.innerHTML.includes("-")){
+      display.innerHTML = display.innerHTML.substring(1);
+    }
   });
 
   equalButton.addEventListener("click", function(){
@@ -164,9 +164,9 @@ function loaded(){
       success: function(response){
         currentTotal = response.answer;
         display.innerHTML = currentTotal;
-        numNext = false;
         currentTotal = 0;
         previousOp = "";
+        numNext = false;
       }
     });
   });

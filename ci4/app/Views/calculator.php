@@ -94,7 +94,6 @@
 	</main>
 	<footer>
 		<h6>Created By: Griffin Rades</h6>
-		<h6>Current version only supports hitting equal before switching operations</h6>
 	</footer>
 </body>
 </html>
