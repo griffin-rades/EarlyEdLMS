@@ -85,16 +85,32 @@ function loaded(){
   });
 
   mutlButton.addEventListener("click", function(){
-    $.ajax({
-      type: "POST",
-      url: "calculate/multiply/" + display.innerHTML + "/" + currentTotal,
-      dataType:'JSON',
-      success: function(response){
-        currentTotal = response.answer;
-        display.innerHTML = currentTotal;
-        console.log(currentTotal);
+      if(currentTotal == 0){
+          $.ajax({
+            type: "POST",
+            url: "calculate/multiply/" + display.innerHTML + "/" + 1,
+            dataType:'JSON',
+            success: function(response){
+              currentTotal = response.answer;
+              display.innerHTML = "*";
+              previousOp = "multiply";
+              numNext = false;
+            }
+          });
+      }else{
+          $.ajax({
+            type: "POST",
+            url: "calculate/multiply/" + display.innerHTML + "/" + currentTotal,
+            dataType:'JSON',
+            success: function(response){
+              currentTotal = response.answer;
+              display.innerHTML = "*";
+              previousOp = "multiply";
+              numNext = false;
+            }
+          });
       }
-    });
+    
   });
 
   divideButton.addEventListener("click", function(){
@@ -105,8 +121,9 @@ function loaded(){
       dataType:'JSON',
       success: function(response){
         currentTotal = response.answer;
-        display.innerHTML = currentTotal;
-        console.log(currentTotal);
+        display.innerHTML = "/";
+        previousOp = "/";
+        numNext = false;
       }
     });
   });

@@ -18,22 +18,31 @@ class Calculate extends BaseController
 	}
 	
 	public function subtract($numToSubtract, $currentTotal, $first = false){
-		if$first){
+		if($first){
 			$currentTotal = $numToSubtract;
 		}else{
 			$currentTotal -= $numToSubtract;
 		}
 		return $this->response->setJSON(array("answer"=>$currentTotal));
 	}
-	public function multiply(){
-
+	
+	public function multiply($number, $currentTotal){
+		$currentTotal *= $number;
+		
+		return $this->response->setJSON(array("answer"=>$currentTotal));
 	}
+	
 	public function divide(){
 
 	}
+	
 	public function equal($total, $prevOp, $number){
 		if($prevOp == "add"){
 			$total += $number;
+		}elseif($prevOp == "subtract"){
+			$total -= $number;
+		}elseif($prevOp == "multiply"){
+			$total *= $number;
 		}
 
 		return $this->response->setJSON(array("answer"=>$total));
