@@ -6,6 +6,12 @@ class Calculate extends BaseController
 	// {
 	// 	return view('calculator');
 	// }
+	public function getSession(){
+		$currentTotal = $this->session->get("currentScreen");
+
+		return $this->response->setJSON(array("answer"=>$currentTotal));
+	}
+
 	public function number($number){
 		$currentScreen += $number;
 		$this->session->set("currentScreen", $currentScreen);
@@ -57,14 +63,13 @@ class Calculate extends BaseController
 
 		return $this->response->setJSON(array("answer"=>$total));
 	}
-	
+
 	public function percent($number){
 		$number = $number * .01;
 
 		return $this->response->setJSON(array("answer"=>$number));
 	}
 	public function clear(){
-		//$this->session->set('current', $currentScreen);
+		$this->session->set('currentScreen', "");
 	}
-	//--------------------------------------------------------------------
 }

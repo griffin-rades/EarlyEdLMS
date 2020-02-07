@@ -5,6 +5,21 @@ var previousOp = "";
 var numNext = true;
 
 function loaded(){
+
+  $.ajax({
+    type: "POST",
+    url: "calculate/getSession",
+    dataType:'JSON',
+    success: function(response){
+      if(response.answer == ""){
+        display.innerHTML = 0;
+      }else{
+        currentTotal = response.answer;
+        display.innerHTML = currentTotal;
+      }
+    }
+  });
+
   var display = document.getElementById("calcDisplay");
   var numberButtons = document.getElementsByClassName("number");
   const addButton = document.getElementById("addition");
@@ -19,17 +34,6 @@ function loaded(){
 
   for(var i = 0; i < numberButtons.length; i++){
     numberButtons[i].addEventListener("click", function(e){
-      $.ajax({
-        type: "POST",
-        url: "calculate/number/" + e.target.value,
-        dataType:'JSON',
-        success: function(response){
-          currentTotal = response.answer;
-          display.innerHTML = currentTotal;
-          console.log(currentTotal);
-        }
-      });
-
       if(numNext){
         if(display.innerHTML == "0"){
           display.innerHTML = e.target.value;
@@ -40,6 +44,16 @@ function loaded(){
         display.innerHTML = e.target.value;
         numNext = true;
       }
+
+      $.ajax({
+        type: "POST",
+        url: "calculate/number/" + display.innerHTML,
+        dataType:'JSON',
+        success: function(response){
+          currentTotal = response.answer;
+          display.innerHTML = currentTotal;
+        }
+      });
     });
   }
 
