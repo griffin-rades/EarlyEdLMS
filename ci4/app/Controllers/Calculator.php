@@ -1,6 +1,6 @@
 <?php namespace App\Controllers;
 
-class Home extends BaseController
+class Calculator extends BaseController
 {
 	public function index()
 	{	
