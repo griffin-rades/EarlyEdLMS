@@ -55,6 +55,9 @@
                     <button type="submit" id="loginButton" class="btn btn-dark">Login</button>
                 </form>
             </div>
+            <div class="card-footer">
+                <p id="createAccount">Create Account</p>
+            </div>
         </div>
     </main>
     <footer>
