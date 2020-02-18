@@ -18,10 +18,10 @@
 	</head>
 	<body id="page-top">
 		<nav class="navbar navbar-expand navbar-dark bg-dark static-top">
-			<a class="navbar-brand mr-1" href="<?= site_url() ?>">Aauth</a>
+			<a class="navbar-brand mr-1" href="<?= site_url() ?>">Early LMS</a>
 			<ul class="navbar-nav ml-4">
 				<li class="nav-item">
-					<a href="<?= site_url() ?>">Home</a>
+					<a href="<?= site_url() ?>">Login</a>
 				</li>
 			</ul>
 			<ul class="navbar-nav ml-auto">

@@ -34,12 +34,12 @@
 			  </label>
 			</div>
 		  </div>
-					<button class="btn btn-primary btn-block" type="submit"><?=lang('Account.loginLabelSubmit')?></button>
+					<button class="btn btn-primary btn-block" type="submit">sub</button>
 		<?= form_close() ?>
 		<?php if (isset($providers) && $providers): ?>
 			  <div class="text-center">&mdash;</div>
 			<?php foreach ($providers as $provider): ?>
-					<a href="<?= site_url('account/social/login/' . $provider) ?>" class="btn btn-info btn-block" type="submit"><?=lang('Account.loginLabelSocial') . $provider?></a>
+					<a href="<?= site_url('account/social/login/' . $provider) ?>" class="btn btn-info btn-block" type="submit">subm,it</a>
 		<?php endforeach; ?>
 		<?php endif; ?>
 	  </div>
