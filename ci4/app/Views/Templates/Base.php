@@ -6,6 +6,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<meta name="description" content="">
 		<meta name="author" content="">
+		<title>Early Ed. LMS</title>
 		<title><?= (isset($title) ? $title : '') ?></title>
 		<link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 		<link href="/assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
@@ -21,7 +22,22 @@
 			<a class="navbar-brand mr-1" href="<?= site_url() ?>">Early LMS</a>
 			<ul class="navbar-nav ml-4">
 				<li class="nav-item">
-					<a href="<?= site_url() ?>">Login</a>
+					<?php if (is_loggedin()): ?>
+						<li class="nav-item">
+								<a class="nav-link" href="#">Home</a>
+						</li>
+						<li class="nav-item">
+								<a class="nav-link" href="#">Grades</a>
+						</li>
+						<li class="nav-item">
+								<a class="nav-link" href="#">Parents</a>
+						</li>
+						<li class="nav-item">
+								<a class="nav-link" href="#">Allergy</a>
+						</li>
+					<?php else: ?>
+					<a href="<?= site_url('account/login') ?>">Login</a>
+				<?php endif; ?>
 				</li>
 			</ul>
 			<ul class="navbar-nav ml-auto">

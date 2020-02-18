@@ -42,11 +42,11 @@
                 <form action=<?= site_url('login/loginUser')?> method="POST" id="loginForm">
                     <div class="form-group">
                         <label for="userEmail">Email address</label>
-                        <input type="email" class="form-control" id="userEmail" placeholder="Enter email">
+                        <input type="email" name="userEmail" class="form-control" id="userEmail" placeholder="Enter email">
                     </div>
                     <div class="form-group">
                         <label for="userPassword">Password</label>
-                        <input type="password" class="form-control" id="userPassword" placeholder="Password">
+                        <input type="password" name="userPassword" class="form-control" id="userPassword" placeholder="Password">
                     </div>
                     <div class="form-check">
                         <input type="checkbox" class="form-check-input" id="rememberMe">
