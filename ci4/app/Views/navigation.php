@@ -33,7 +33,7 @@
 						<a class="nav-link disabled" href="#">Allergy</a>
 					</li>
 					<li class="nav-item-right">
-						<p><?php $this->aauth->get_user_id();?></p>
+						<p><?php echo $this->aauth->get_user_id();?></p>
 					</li>
 				</ul>
 			</div>
