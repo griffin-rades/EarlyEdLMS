@@ -184,7 +184,7 @@ class Aauth extends BaseConfig
 	public $loginAccurateErrors          = false;
 	public $loginProtection              = true;
 	public $loginAttemptCookie           = false;
-	public $loginAttemptLimit            = 10;
+	public $loginAttemptLimit            = 100;
 	public $loginAttemptLimitTimePeriod  = '5 minutes';
 	public $loginAttemptRemoveSuccessful = true;
 

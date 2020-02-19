@@ -9,6 +9,11 @@ body{
 .card-header{
     text-align: center;
 }
+.errorCard{
+    max-width: 20rem;
+    margin-top: 10px;
+    border-radius: 30px;
+}
 .loginCard{
     max-width: 25rem;
     margin-top: 50px;

@@ -17,24 +17,27 @@
 			</button>
 			<div class="collapse navbar-collapse" id="navbarNav">
 				<ul class="navbar-nav">
+					<?php if(!$this->data['aauth']->isLoggedin()):?>
 					<li class="nav-item active">
 						<a class="nav-link" href="">Login <span class="sr-only">(current)</span></a>
 					</li>
+					<?php else: ?>
 					<li class="nav-item">
-						<a class="nav-link disabled" href="#">Home</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link disabled" href="#">Grades</a>
+						<a class="nav-link" href="#">Home</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link disabled" href="#">Parents</a>
+						<a class="nav-link" href="#">Grades</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link disabled" href="#">Allergy</a>
+						<a class="nav-link" href="#">Parents</a>
 					</li>
-					<li class="nav-item-right">
-						<p><?php echo $this->aauth->get_user_id();?></p>
+					<li class="nav-item">
+						<a class="nav-link" href="#">Allergy</a>
 					</li>
+					<li class="nav-item">
+						<a class="nav-link text-danger" href="<?php echo site_url('/logout');?>">Logout</a>
+					</li>
+					<?php endif;?>
 				</ul>
 			</div>
 			</nav>

@@ -18,7 +18,7 @@
 namespace App\Controllers;
 
 use CodeIgniter\Controller;
-
+use App\Libraries\Aauth;
 /**
  * Aauth Home Controller
  *
@@ -29,12 +29,16 @@ class Home extends BaseController
 	/**
 	 * Index
 	 *
-	 * @return void
+	 * @return string
 	 */
 	public function index()
 	{
 		helper('aauth');
 
-		return view('loginTeacher');
+		$data = array();
+		$this->aauth = new Aauth();
+		$data['aauth'] = $this->aauth;
+
+		return view('loginTeacher', $data);
 	}
 }

@@ -6,6 +6,13 @@
 </head>
 <body>
     <main>
+		<?php if($this->data['error']):?>
+		<div class="card bg-danger text-center mx-auto errorCard">
+			<div class="card-body">
+				<?php echo $this->data['errors'];?>
+			</div>
+		</div>
+		<?php endif;?>
         <div class="card bg-light text-center mx-auto loginCard">
             <div class="card-body">
                 <form action=<?php echo site_url('login/loginUser')?> method="POST" id="loginForm">
@@ -25,7 +32,7 @@
                 </form>
             </div>
             <div class="card-footer">
-                <a href="<?php echo site_url('create/newUser')?>">Create Account</a>
+                <a href="<?php echo site_url('create')?>">Create Account</a>
             </div>
         </div>
     </main>

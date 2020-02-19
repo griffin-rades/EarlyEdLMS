@@ -18,7 +18,7 @@ use CodeIgniter\Controller;
 
 class BaseController extends Controller
 {
-	
+
 	/**
 	* An array of helpers to be loaded automatically upon
 	* class instantiation. These helpers will be available
@@ -29,12 +29,11 @@ class BaseController extends Controller
 	* AAuth Library
 	* @var \App\Libraries\Aauth $aauth
 	*/
-	
+
 	protected $aauth;
 	protected $helpers = [];
 	protected $session = null;
 	protected $request;
-	
 	/**
 	* Constructor.
 	*/
@@ -42,15 +41,15 @@ class BaseController extends Controller
 	{
 		// Do Not Edit This Line
 		parent::initController($request, $response, $logger);
-		
+
 		//--------------------------------------------------------------------
 		// Preload any models, libraries, etc, here.
 		//--------------------------------------------------------------------
 		// E.g.:
-		
+
 		$this->session = \Config\Services::session();
 		$this->aauth = new \App\Libraries\Aauth();
 		$this->request = \Config\Services::request();
 	}
-	
+
 }
