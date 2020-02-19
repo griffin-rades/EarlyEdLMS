@@ -3,8 +3,6 @@ body{
 }
 .container-fluid{
     margin-top: 10px;
-    border-style: dashed;
-    border-color: black;
 }
 .card-header{
     text-align: center;

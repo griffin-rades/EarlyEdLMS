@@ -6,7 +6,6 @@
 	</head>
 	<body>
 		<main>
-			<?php echo $this->data['user']['username'];?>
 			<div class="container-fluid">
 				<div class="row justify-content-center">
 					<div class="col-sm">
@@ -14,6 +13,10 @@
 							<div class="card-body">
 								<div class="card-header">
 									<h3>Account Details</h3>
+								</div>
+								<div class="card-body">
+									<p>Hello: <?php echo $this->data['user']['username'];?></p>
+									<p>Edit Account</p>
 								</div>
 							</div>
 						</div>
