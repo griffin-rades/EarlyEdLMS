@@ -1,9 +1,21 @@
 body{
     background-color: #39A0D1;
 }
-.card{
+.container-fluid{
+    margin-top: 10px;
+    border-style: dashed;
+    border-color: black;
+}
+.card-header{
+    text-align: center;
+}
+.loginCard{
     max-width: 25rem;
     margin-top: 50px;
+    border-radius: 30px;
+}
+.teacherHomeCard{
+    max-width: 25rem;
     border-radius: 30px;
 }
 footer{

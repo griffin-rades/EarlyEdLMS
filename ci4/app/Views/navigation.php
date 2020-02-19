@@ -6,8 +6,7 @@
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-		<title>Early Ed. LMS</title>
-		<link rel="stylesheet" href="http://cs.smumn.edu/student/grades/ci4/public/loginStyle.css">
+		<link rel="stylesheet" href="http://cs.smumn.edu/student/grades/ci4/public/teacherStyle.css">
 	</head>
 	<body>
 		<main>
@@ -32,6 +31,9 @@
 					</li>
 					<li class="nav-item">
 						<a class="nav-link disabled" href="#">Allergy</a>
+					</li>
+					<li class="nav-item-right">
+						<p><?php $this->aauth->get_user_id();?></p>
 					</li>
 				</ul>
 			</div>

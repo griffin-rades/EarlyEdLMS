@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+	<title>Early Ed. LMS</title>
 	<?php include('navigation.php'); ?>
 </head>
 <body>
     <main>
-        <div class="card bg-light text-center mx-auto">
+        <div class="card bg-light text-center mx-auto loginCard">
             <div class="card-body">
                 <form action=<?php echo site_url('login/loginUser')?> method="POST" id="loginForm">
                     <div class="form-group">
