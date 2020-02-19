@@ -3,12 +3,14 @@
 class Login extends BaseController{
 
   function loginUser(){
-    helper('aauth');
-    
-    $email = $_POST["userEmail"];
-    $password = $_POST["userPassword"];
+
+    $data = array();
+
+    $data['email'] = $this->request->getVar("userEmail");
+    $data['password'] = $this->request->getVar("userPassword");
 
 
-    echo view("teacherHome");
+
+    return view("teacherHome", $data);
   }
 }

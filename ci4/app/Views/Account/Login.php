@@ -35,7 +35,7 @@
           </label>
         </div>
       </div>
-      <button class="btn btn-primary btn-block" type="submit">sub</button>
+      <button class="btn btn-primary btn-block" type="submit">Submit</button>
       <?= form_close() ?>
       <?php if (isset($providers) && $providers): ?>
         <div class="text-center">&mdash;</div>

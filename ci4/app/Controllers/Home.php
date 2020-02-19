@@ -24,7 +24,7 @@ use CodeIgniter\Controller;
  *
  * @package CodeIgniter-Aauth
  */
-class Home extends Controller
+class Home extends BaseController
 {
 	/**
 	 * Index
@@ -35,6 +35,6 @@ class Home extends Controller
 	{
 		helper('aauth');
 
-		echo view('Home');
+		return view('loginTeacher');
 	}
 }
