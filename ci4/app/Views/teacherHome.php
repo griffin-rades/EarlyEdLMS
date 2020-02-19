@@ -6,6 +6,7 @@
 	</head>
 	<body>
 		<main>
+			<?php echo $this->data['user']['username'];?>
 			<div class="container-fluid">
 				<div class="row justify-content-center">
 					<div class="col-sm">
