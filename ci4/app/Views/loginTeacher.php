@@ -18,7 +18,7 @@
                     </div>
                     <div class="form-check">
                         <input type="checkbox" class="form-check-input" id="rememberMe">
-                        <label class="form-check-label" for="rememberMe">Remember Me</label>
+                        <label class="form-check-label" name="rememberMe" for="rememberMe">Remember Me</label>
                     </div>
                     <button type="submit" id="loginButton" class="btn btn-dark">Login</button>
                 </form>

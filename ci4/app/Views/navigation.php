@@ -6,9 +6,8 @@
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-		<script src="login.js"></script>
 		<title>Early Ed. LMS</title>
-		<link rel="stylesheet" href="loginStyle.css">
+		<link rel="stylesheet" href="http://cs.smumn.edu/student/grades/ci4/public/loginStyle.css">
 	</head>
 	<body>
 		<main>
@@ -19,24 +18,21 @@
 			</button>
 			<div class="collapse navbar-collapse" id="navbarNav">
 				<ul class="navbar-nav">
-					<?php if(!is_loggedin()): ?>
-						<li class="nav-item">
-							<a class="nav-link disabled" href="#">Home</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link disabled" href="#">Grades</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link disabled" href="#">Parents</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link disabled" href="#">Allergy</a>
-						</li>
-					<?php else: ?>
-						<li class="nav-item active">
-							<a class="nav-link" href="">Login <span class="sr-only">(current)</span></a>
-						</li>
-					<?php endif;?>
+					<li class="nav-item active">
+						<a class="nav-link" href="">Login <span class="sr-only">(current)</span></a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link disabled" href="#">Home</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link disabled" href="#">Grades</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link disabled" href="#">Parents</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link disabled" href="#">Allergy</a>
+					</li>
 				</ul>
 			</div>
 			</nav>
