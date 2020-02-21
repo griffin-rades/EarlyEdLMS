@@ -29,11 +29,15 @@ class Create extends BaseController{
 			$data['success'] = "The account was not created";
 		}
 
+		$this->aauth->login($userEmail,$userPassword);
+
 		$tableData = [
-			'teacherID' => $this->aauth->getUserID(),
+			'teacherID' => $this->aauth->getUserId(),
 			'firstName'  => $firstName,
 			'lastName'  => $lastName
 		];
+
+		$this->aauth->logout();
 
 		$this->db->table('lms_teacher')->insert($tableData);
 
