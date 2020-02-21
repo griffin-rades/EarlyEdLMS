@@ -16,20 +16,20 @@ class Login extends BaseController{
 
 		$studentGradeList = $this->db->query('SELECT studentFirstName, studentLastName, grade FROM lms_studentInformation JOIN lms_students ON lms_studentInformation.studentID = lms_students.studentID');
 
-		$part = 'SELECT firstName, lastName FROM lms_teacher JOIN aauth_users ON lms_teacher.teacherID =';
+		$part = 'SELECT teacherId, firstName, lastName FROM lms_teacher WHERE teacherID =';
 		$part .= $this->aauth->getUserId();
 		$teacherName = $this->db->query($part);
 
 		$teacherInfo = $teacherName->getResult();
 		$studentInfo = $studentGradeList->getResult();
 
-		foreach ($teacherName->getFieldNames() as $field)
-		{
-			echo $field;
+		foreach($teacherInfo as $row) {
+			$firstName = $row->firstName;
+			$lastName = $row->lastName;
 		}
 
 		$data['studentGradeList'] = $studentInfo;
-		$data['teacherName'] = $teacherInfo;
+		$data['teacherName'] = $firstName . " " . $lastName;
 
 		return view('teacherHome', $data);
 	}else{
