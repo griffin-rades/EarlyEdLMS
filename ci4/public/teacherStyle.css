@@ -7,20 +7,26 @@ body{
 .card-header{
     text-align: center;
 }
+.card{
+    border-radius: 30px;
+}
 .errorCard{
     max-width: 20rem;
     margin-top: 10px;
-    border-radius: 30px;
 }
 .loginCard{
     max-width: 25rem;
     margin-top: 50px;
-    border-radius: 30px;
 }
-.teacherHomeCard{
-    max-width: 25rem;
-    border-radius: 30px;
-}
+/*.accountDetailsHome{*/
+/*    max-width: 25rem;*/
+/*}*/
+/*.studentDetailsHome{*/
+/*    max-width: 40rem;*/
+/*}*/
+/*.classesHome{*/
+/*    max-width: 40rem;*/
+/*}*/
 footer{
   text-align: center;
   margin-top: 40px;

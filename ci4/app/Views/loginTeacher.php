@@ -12,6 +12,13 @@
 				<?php echo $this->data['errors'];?>
 			</div>
 		</div>
+		<?php elseif ($this->data['success']):?>
+			<div class="card bg-danger text-center mx-auto errorCard">
+				<div class="card-body">
+					<?php echo $this->data['success'];?>
+					<p>Please Login</p>
+				</div>
+			</div>
 		<?php endif;?>
         <div class="card bg-light text-center mx-auto loginCard">
             <div class="card-body">

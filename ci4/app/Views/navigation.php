@@ -19,7 +19,7 @@
 				<ul class="navbar-nav">
 					<?php if(!$this->data['aauth']->isLoggedin()):?>
 					<li class="nav-item active">
-						<a class="nav-link" href="">Login <span class="sr-only">(current)</span></a>
+						<a class="nav-link" href="<?php echo site_url('/home');?>">Login <span class="sr-only">(current)</span></a>
 					</li>
 					<?php else: ?>
 					<li class="nav-item">

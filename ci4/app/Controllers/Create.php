@@ -20,13 +20,25 @@ class Create extends BaseController{
 		$userEmail = $this->request->getVar('userEmail');
 		$userPassword = $this->request->getVar('userPassword');
 		$userName = $this->request->getVar('userName');
+		$firstName = $this->request->getVar('firstName');
+		$lastName = $this->request->getVar('lastName');
 
-		$this->aauth->createUser($userEmail, $userPassword, $userName);
+		if($this->aauth->createUser($userEmail, $userPassword, $userName)){
+			$data['success'] = "The account was successfuly created";
+		}else{
+			$data['success'] = "The account was not created";
+		}
 
-		$this->aauth->login($userEmail,$userPassword, false);
+		$tableData = [
+			'teacherID' => $this->aauth->getUserID(),
+			'firstName'  => $firstName,
+			'lastName'  => $lastName
+		];
 
-		$data['user'] = $this->aauth->getUser();
+		$this->db->table('lms_teacher')->insert($tableData);
 
-		return view('teacherHome', $data);
+
+
+		return view('loginTeacher', $data);
 	}
 }

@@ -28,6 +28,18 @@
 					<label for="userName">Username</label>
 					<input type="text" name="userName" class="form-control" id="userName" placeholder="UserName">
 				</div>
+				<div class="form-group">
+					<div class="row">
+						<div class="col">
+							<label for="firstName">First Name</label>
+							<input type="text" name="firstName" id="firstName" class="form-control" placeholder="First name">
+						</div>
+						<div class="col">
+							<label for="lastName">Last Name</label>
+							<input type="text" name="lastName" id="lastName" class="form-control" placeholder="Last name">
+						</div>
+					</div>
+				</div>
 				<button type="submit" id="createAccountButton" class="btn btn-dark">Create Account</button>
 			</form>
 		</div>

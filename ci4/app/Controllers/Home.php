@@ -39,6 +39,7 @@ class Home extends BaseController
 		$this->aauth = new Aauth();
 		$data['aauth'] = $this->aauth;
 
+
 		return view('loginTeacher', $data);
 	}
 }

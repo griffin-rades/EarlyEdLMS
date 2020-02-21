@@ -34,6 +34,7 @@ class BaseController extends Controller
 	protected $helpers = [];
 	protected $session = null;
 	protected $request;
+	protected $db;
 	/**
 	* Constructor.
 	*/
@@ -50,6 +51,7 @@ class BaseController extends Controller
 		$this->session = \Config\Services::session();
 		$this->aauth = new \App\Libraries\Aauth();
 		$this->request = \Config\Services::request();
+		$this->db = \Config\Database::connect();
 	}
 
 }
