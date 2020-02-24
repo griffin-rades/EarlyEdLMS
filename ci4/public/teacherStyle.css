@@ -6,6 +6,13 @@ body{
 }
 .card-header{
     text-align: center;
+    text-decoration: underline;
+    background-color: RGBA(255,255,255,0);
+    border-color: white;
+}
+.studentList{
+    text-align: center;
+    font-size: large;
 }
 .card{
     border-radius: 30px;
@@ -18,15 +25,6 @@ body{
     max-width: 25rem;
     margin-top: 50px;
 }
-/*.accountDetailsHome{*/
-/*    max-width: 25rem;*/
-/*}*/
-/*.studentDetailsHome{*/
-/*    max-width: 40rem;*/
-/*}*/
-/*.classesHome{*/
-/*    max-width: 40rem;*/
-/*}*/
 footer{
   text-align: center;
   margin-top: 40px;

@@ -22,18 +22,20 @@
 						</div>
 					</div>
 					<div class="col-sm-6">
-						<div class="card studentDetailsHome";">
+						<div class="card studentDetailsHome">
 							<div class="card-body">
 								<div class="card-header">
 									<h3>All <?php echo $this->data['teacherName'];?> Student Grades</h3>
 								</div>
 								<ol>
+									<div class="container-fluid studentList">
 									<?php foreach($this->data['studentGradeList'] as $row){
-										echo "<li>";
-										echo $row->studentFirstName . $row->studentLastName . $row->grade;
-										echo "</li>";
+										echo "<div class='row'>";
+										echo "<div class='col-6'> " . $row->studentFirstName . " " . $row->studentLastName . "</div><div class='col-6'>" . $row->grade . "</div>";
+										echo "</div>";
 									}
 									?>
+									</div>
 								</ol>
 							</div>
 						</div>
