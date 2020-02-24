@@ -4,6 +4,14 @@ use App\Libraries\Aauth;
 
 class Logout extends BaseController{
 
+	/**
+	 * index
+	 *
+	 * log the user out
+	 *
+	 *
+	 * @return string, array
+	 */
 	function index()
 	{
 		$this->aauth->logout();

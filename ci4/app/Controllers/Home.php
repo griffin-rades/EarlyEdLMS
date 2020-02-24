@@ -29,7 +29,7 @@ class Home extends BaseController
 	/**
 	 * Index
 	 *
-	 * @return string
+	 * @return string, array
 	 */
 	public function index()
 	{

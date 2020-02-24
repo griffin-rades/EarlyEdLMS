@@ -3,6 +3,13 @@
 use App\Libraries\Aauth;
 
 class Login extends BaseController{
+	/**
+	 * login User
+	 *
+	 * Using the login form data the user is logged in
+	 *
+	 * @return string, array
+	 */
   function loginUser(){
 
     $data = array();

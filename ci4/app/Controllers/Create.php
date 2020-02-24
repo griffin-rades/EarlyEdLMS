@@ -4,6 +4,14 @@ use App\Libraries\Aauth;
 
 class Create extends BaseController{
 
+	/**
+	 * index
+	 *
+	 * loads the create account page
+	 *
+	 *
+	 * @return string, array
+	 */
 	function index(){
 		$data = array();
 		$this->aauth = new Aauth();
@@ -11,6 +19,15 @@ class Create extends BaseController{
 
 		return view('createAccount', $data);
 	}
+
+	/**
+	 * newUser
+	 *
+	 * Gets the form data when the create account form is submitted
+	 *
+	 *
+	 * @return string, array
+	 */
 	function newUser(){
 		$data = array();
 		$this->aauth = new Aauth();
