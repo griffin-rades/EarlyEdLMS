@@ -49,14 +49,21 @@ class Create extends BaseController{
 		$this->aauth->login($userEmail,$userPassword);
 
 		$tableData = [
-			'teacherID' => $this->aauth->getUserId(),
+			'aauthID' => $this->aauth->getUserId(),
 			'firstName'  => $firstName,
 			'lastName'  => $lastName
 		];
 
 		$this->aauth->logout();
 
-		$this->db->table('lms_teacher')->insert($tableData);
+		try {
+			$this->userModel->insert($tableData);
+		}
+		catch (\ReflectionException $e) {
+
+		}
+
+		//$this->db->table('lms_teacher')->insert($tableData);
 
 
 

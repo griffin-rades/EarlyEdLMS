@@ -47,6 +47,11 @@ class BaseController extends Controller
 	protected $db;
 
 	/**
+	 * @var \App\Models\Lms_userModel $userModel
+	 */
+	protected $userModel;
+
+	/**
 	* Constructor.
 	*/
 	public function initController(\CodeIgniter\HTTP\RequestInterface $request, \CodeIgniter\HTTP\ResponseInterface $response, \Psr\Log\LoggerInterface $logger)
@@ -63,6 +68,7 @@ class BaseController extends Controller
 		$this->aauth = new \App\Libraries\Aauth();
 		$this->request = \Config\Services::request();
 		$this->db = \Config\Database::connect();
+		$this->userModel = new \App\Models\Lms_userModel();
 	}
 
 }

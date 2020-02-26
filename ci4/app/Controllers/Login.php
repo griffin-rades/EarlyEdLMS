@@ -23,7 +23,7 @@ class Login extends BaseController{
 
 		$studentGradeList = $this->db->query('SELECT studentFirstName, studentLastName, grade FROM lms_studentInformation JOIN lms_students ON lms_studentInformation.studentID = lms_students.studentID');
 
-		$part = 'SELECT teacherId, firstName, lastName FROM lms_teacher WHERE teacherID =';
+		$part = 'SELECT aauthID, firstName, lastName FROM lms_teacher WHERE aauthID =';
 		$part .= $this->aauth->getUserId();
 		$teacherName = $this->db->query($part);
 
