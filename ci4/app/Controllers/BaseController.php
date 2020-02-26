@@ -23,18 +23,29 @@ class BaseController extends Controller
 	* An array of helpers to be loaded automatically upon
 	* class instantiation. These helpers will be available
 	* to all other controllers that extend BaseController.
-	*
-	* @var array
-	*
+	 *
 	* AAuth Library
 	* @var \App\Libraries\Aauth $aauth
 	*/
 
 	protected $aauth;
 	protected $helpers = [];
+
+	/**
+	 * @var \CodeIgniter\Session\SessionInterface $session
+	 */
 	protected $session = null;
+
+	/**
+	 * @var \CodeIgniter\HTTP\Request $request
+	 */
 	protected $request;
+
+	/**
+	 * @var \CodeIgniter\Database\BaseBuilder $db
+	 */
 	protected $db;
+
 	/**
 	* Constructor.
 	*/
