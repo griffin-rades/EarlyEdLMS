@@ -15,7 +15,7 @@
 									<h3>Account Details</h3>
 								</div>
 								<div class="card-body">
-									<p>Hello: <?php echo $this->data['teacherName'];?></p>
+									<p>Hello: <?php echo $this->data['aauth']->getUserVar('firstName') .  " " . $this->data['aauth']->getUserVar('lastName');?></p>
 									<a href="#">Edit Account</a>
 								</div>
 							</div>
