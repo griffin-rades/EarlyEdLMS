@@ -19,23 +19,23 @@
 				<ul class="navbar-nav">
 					<?php if(!$this->data['aauth']->isLoggedin()):?>
 					<li class="nav-item active">
-						<a class="nav-link" href="<?php echo site_url('/home');?>">Login <span class="sr-only">(current)</span></a>
+						<a class="nav-link" href=<?php echo site_url('/home');?>>Login <span class="sr-only">(current)</span></a>
 					</li>
 					<?php else: ?>
 					<li class="nav-item">
-						<a class="nav-link" href="#">Home</a>
+						<a class="nav-link" href=<?php echo site_url('/homePage');?>>Home</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="#">Grades</a>
+						<a class="nav-link" href=<?php echo site_url('/editGrades');?>>Grades</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="#">Parents</a>
+						<a class="nav-link" href=<?php echo site_url('/studentPage');?>>Students</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="#">Allergy</a>
+						<a class="nav-link" href=<?php echo site_url('/parentInfo');?>>Parents</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link text-danger" href="<?php echo site_url('/logout');?>">Logout</a>
+						<a class="nav-link text-danger" href=<?php echo site_url('/logout');?>>Logout</a>
 					</li>
 					<?php endif;?>
 				</ul>

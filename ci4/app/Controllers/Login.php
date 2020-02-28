@@ -19,7 +19,6 @@ class Login extends BaseController{
     $data['password'] = $this->request->getVar('userPassword');
 
     if($this->aauth->login($this->request->getVar('userEmail'), $this->request->getVar('userPassword'), $this->request->getVar('rememberMe'))){
-    	$data['user'] = $this->aauth->getUser();
 
 		$studentGradeList = $this->db->query('SELECT studentFirstName, studentLastName, grade FROM lms_studentInformation JOIN lms_students ON lms_studentInformation.studentID = lms_students.studentID');
 
