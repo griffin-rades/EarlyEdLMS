@@ -13,7 +13,7 @@
 			</div>
 		</div>
 	<?php endif;?>
-	<div class="card bg-light text-center mx-auto loginCard">
+	<div class="card bg-light text-center mx-auto">
 		<div class="card-body">
 			<form action=<?php echo site_url('create/newUser')?> method="POST" id="newUserForm">
 				<div class="form-group">

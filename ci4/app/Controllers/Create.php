@@ -45,11 +45,50 @@ class Create extends BaseController{
 			$this->aauth->addMember(4, $this->aauth->getUserId($userEmail));
 			$this->aauth->setUserVar('lastName',$lastName, $this->aauth->getUserId($userEmail));
 			$this->aauth->setUserVar('firstName', $firstName, $this->aauth->getUserId($userEmail));
+			$this->aauth->setUserVar('classID', rand(1,3), $this->aauth->getGroupId($userEmail));
 		}else{
 			$data['errors'] = $this->aauth->printErrors('<br />', true);
 			return view('createAccount', $data);
 		}
 
 		return view('loginTeacher', $data);
+	}
+
+	/**
+	 * createStudent
+	 *
+	 * Gets form data from the create student form
+	 *
+	 * @return string, array
+	 */
+	function createStudent(){
+		$data = array();
+		$this->aauth = new Aauth();
+
+		$data['aauth'] = $this->aauth;
+
+		$firstName = $this->request->getVar('firstName');
+		$lastName = $this->request->getVar('lastName');
+		$age = $this->request->getVar('age');
+
+		$studentData = [
+			'lastName' => $lastName,
+			'firstName' => $firstName,
+			'age' => $age,
+			'classID' => $this->aauth->getUserVar('classID')
+		];
+
+		try{
+			$this->studentModel->insert($studentData);
+		} catch (\ReflectionException $e) {
+
+		}
+
+		$studentNameList = $this->db->query('SELECT lms_students.firstName, lms_students.lastName FROM lms_students WHERE lms_students.classID = ' . $this->aauth->getUserVar('classID'));
+		$studentInfo = $studentNameList->getResult();
+
+		$data['studentList'] = $studentInfo;
+
+		return view('students', $data);
 	}
 }

@@ -20,11 +20,18 @@ class Login extends BaseController{
 
     if($this->aauth->login($this->request->getVar('userEmail'), $this->request->getVar('userPassword'), $this->request->getVar('rememberMe'))){
 
-		$studentGradeList = $this->db->query('SELECT studentFirstName, studentLastName, grade FROM lms_studentInformation JOIN lms_students ON lms_studentInformation.studentID = lms_students.studentID');
+		$studentNameList = $this->db->query('SELECT lms_students.firstName, lms_students.lastName, lms_studentInformation.grade FROM lms_students JOIN lms_studentInformation ON lms_students.id = lms_studentInformation.studentID WHERE lms_students.classID = ' . $this->aauth->getUserVar('classID'));
 
-		$studentInfo = $studentGradeList->getResult();
+		$query = 'SELECT lms_class.classTitle FROM lms_class WHERE lms_class.id = ';
+		$query .= strVal($this->aauth->getUserVar('classID'));
 
-		$data['studentGradeList'] = $studentInfo;
+		$teacherClass = $this->db->query($query);
+
+		$studentInfo = $studentNameList->getResult();
+		$teacherClassInfo = $teacherClass->getResult();
+
+		$data['studentNameList'] = $studentInfo;
+		$data['teacherClass'] = $teacherClassInfo;
 
 		return view('teacherHome', $data);
 	}else{

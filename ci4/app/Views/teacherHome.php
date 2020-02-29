@@ -12,10 +12,11 @@
 						<div class="card accountDetailsHome";">
 							<div class="card-body">
 								<div class="card-header">
-									<h3>Account Details</h3>
+									<h3>Teacher Details</h3>
 								</div>
 								<div class="card-body">
 									<p>Hello: <?php echo $this->data['aauth']->getUserVar('firstName') .  " " . $this->data['aauth']->getUserVar('lastName');?></p>
+									<p>Your Class: <?php foreach($this->data['teacherClass'] as $row){ echo $row->classTitle;} ?></p>
 									<a href="#">Edit Account</a>
 								</div>
 							</div>
@@ -25,7 +26,7 @@
 						<div class="card studentDetailsHome">
 							<div class="card-body">
 								<div class="card-header">
-									<h3>All Student Grades</h3>
+									<h3>All Your Students Grades</h3>
 								</div>
 								<ol>
 									<div class="container-fluid studentList">
@@ -37,23 +38,14 @@
 												<h5 style="text-decoration: underline">Grade/100</h5>
 											</div>
 										</div>
-									<?php foreach($this->data['studentGradeList'] as $row){
+									<?php foreach($this->data['studentNameList'] as $row){
 										echo "<div class='row'>";
-										echo "<div class='col-6'> " . $row->studentFirstName . " " . $row->studentLastName . "</div><div class='col-6'>" . $row->grade . "</div>";
+										echo "<div class='col-6'> " . $row->firstName . " " . $row->lastName . "</div><div class='col-6'>" . $row->grade . "</div>";
 										echo "</div>";
 									}
 									?>
 									</div>
 								</ol>
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-3">
-						<div class="card classesHome";">
-							<div class="card-body">
-								<div class="card-header">
-									<h3>Classes</h3>
-								</div>
 							</div>
 						</div>
 					</div>
