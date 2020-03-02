@@ -11,11 +11,11 @@
 				<div class="col-sm-3">
 					<div class="card bg-light text-center mx-auto createStudent">
 						<div class="card-body">
-							<form action=<?php echo site_url('create/createStudent')?> method="POST" id="loginForm">
+							<div class="card-header">
+								<h4>Create Student</h4>
+							</div>
+							<form action=<?php echo site_url('create/createStudent')?> method="POST" id="createStudent">
 								<div class="form-group">
-									<div class="card-header">
-										<h4>Create Student</h4>
-									</div>
 									<div class="row">
 										<div class="col">
 											<label for="firstName">First Name</label>
@@ -51,12 +51,46 @@
 							<div class="card-header">
 								<h3>All Your Students</h3>
 							</div>
-							<ul>
+							<div class="container-fluid studentList">
+								<div class="row">
+									<div class="col-6">
+										<h5 style="text-decoration: underline">Name</h5>
+									</div>
+									<div class="col-6">
+										<h5 style="text-decoration: underline">Note</h5>
+									</div>
+								</div>
 								<?php foreach($this->data['studentList'] as $row){
-									echo "<li> " . $row->firstName . " " . $row->lastName . "</li>";
+									echo "<div class='row'>";
+									echo "<div class='col-6'> " . $row->firstName . " " . $row->lastName . "</div><div class='col-6'>" . $row->info . "</div>";
+									echo "</div>";
 								}
 								?>
-							</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-3">
+					<div class="card">
+						<div class="card-body">
+							<div class="card-header">
+								<h4>Student Note</h4>
+							</div>
+							<form action=<?php echo site_url('studentPage/studentNote')?> method="POST" id="studentText">
+								<div class="form-group">
+									<label for="studentInfo">Choose a student:</label>
+									<select id="studentInfo"  name="studentInfo">
+										<?php foreach($this->data['studentList'] as $row){
+											echo "<option value='$row->id'> " . $row->firstName . " " . $row->lastName . "</option>";
+										}?>
+									</select>
+								</div>
+								<div class="form-group">
+									<label for="textInfo">Student Info</label>
+									<textarea name="textInfo" maxlength="200" rows="5" cols="50" id="textInfo" class="form-control" required></textarea>
+								</div>
+								<button type="submit" id="save" class="btn btn-dark">Save</button>
+							</form>
 						</div>
 					</div>
 				</div>

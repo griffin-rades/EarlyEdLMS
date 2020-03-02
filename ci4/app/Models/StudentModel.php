@@ -9,7 +9,7 @@ class StudentModel extends Model{
 	protected $returnType = 'array';
 	protected $useSoftDeletes = true;
 
-	protected $allowedFields = ['firstName', 'lastName', 'age', 'classID'];
+	protected $allowedFields = ['firstName', 'lastName', 'age', 'classID', 'info'];
 
 	protected $useTimestamps = false;
 	protected $createdField  = 'created_at';

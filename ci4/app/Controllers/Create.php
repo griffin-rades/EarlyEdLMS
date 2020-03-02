@@ -84,7 +84,7 @@ class Create extends BaseController{
 
 		}
 
-		$studentNameList = $this->db->query('SELECT lms_students.firstName, lms_students.lastName FROM lms_students WHERE lms_students.classID = ' . $this->aauth->getUserVar('classID'));
+		$studentNameList = $this->db->query('SELECT lms_students.firstName, lms_students.lastName, lms_students.id, lms_students.info FROM lms_students WHERE lms_students.classID = ' . $this->aauth->getUserVar('classID'));
 		$studentInfo = $studentNameList->getResult();
 
 		$data['studentList'] = $studentInfo;
