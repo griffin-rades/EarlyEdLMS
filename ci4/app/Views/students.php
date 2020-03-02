@@ -79,7 +79,7 @@
 							<form action=<?php echo site_url('studentPage/studentNote')?> method="POST" id="studentText">
 								<div class="form-group">
 									<label for="studentInfo">Choose a student:</label>
-									<select id="studentInfo"  name="studentInfo">
+									<select id="studentInfo" size="1" name="studentInfo">
 										<?php foreach($this->data['studentList'] as $row){
 											echo "<option value='$row->id'> " . $row->firstName . " " . $row->lastName . "</option>";
 										}?>

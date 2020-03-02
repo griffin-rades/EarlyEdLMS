@@ -39,13 +39,14 @@ class Create extends BaseController{
 		$userName = $this->request->getVar('userName');
 		$firstName = $this->request->getVar('firstName');
 		$lastName = $this->request->getVar('lastName');
+		$classID = rand(1,3);
 
 		if($this->aauth->createUser($userEmail, $userPassword, $userName)){
 			$data['success'] = "The account was successfuly created";
 			$this->aauth->addMember(4, $this->aauth->getUserId($userEmail));
 			$this->aauth->setUserVar('lastName',$lastName, $this->aauth->getUserId($userEmail));
 			$this->aauth->setUserVar('firstName', $firstName, $this->aauth->getUserId($userEmail));
-			$this->aauth->setUserVar('classID', rand(1,3), $this->aauth->getGroupId($userEmail));
+			$this->aauth->setUserVar('classID', $classID, $this->aauth->getUserId($userEmail));
 		}else{
 			$data['errors'] = $this->aauth->printErrors('<br />', true);
 			return view('createAccount', $data);

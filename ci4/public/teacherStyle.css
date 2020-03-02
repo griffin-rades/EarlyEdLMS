@@ -16,6 +16,10 @@ body{
 .card{
     border-radius: 30px;
 }
+.newUserForm{
+    max-width: 30rem;
+    margin-top: 10px;
+}
 .errorCard{
     max-width: 20rem;
     margin-top: 10px;
