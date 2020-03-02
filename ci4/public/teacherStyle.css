@@ -15,6 +15,7 @@ body{
 }
 .card{
     border-radius: 30px;
+    margin-top: 20px;
 }
 .newUserForm{
     max-width: 30rem;

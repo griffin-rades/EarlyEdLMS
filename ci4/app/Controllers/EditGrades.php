@@ -27,6 +27,19 @@ class EditGrades extends BaseController{
 		$this->aauth = new Aauth();
 		$data['aauth'] = $this->aauth;
 
+		$studentID = $this->request->getVar('studentInfo');
+		$assignID = $this->request->getVar('assign');
+		$grade = $this->request->getVar('pointSlider2');
+
+		$gradeData = [
+			'studentID' => $studentID,
+			'classID' => $this->aauth->getUserVar('classID'),
+			'assignmentID' => $assignID,
+			'points' => $grade
+		];
+
+		$this->gradeModel->save($gradeData);
+
 		$studentNameList = $this->db->query('SELECT lms_students.firstName, lms_students.lastName, lms_students.id, lms_students.info FROM lms_students WHERE lms_students.classID = ' . $this->aauth->getUserVar('classID'));
 		$studentInfo = $studentNameList->getResult();
 

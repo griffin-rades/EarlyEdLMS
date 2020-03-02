@@ -23,15 +23,6 @@
 								<label id="points" for="pointSlider">Max Points: </label>
 								<input type="range" min="1" max="100" value="1" class="slider" id="pointSlider" name="pointSlider" required>
 							</div>
-							<script>
-								var slider = document.getElementById("pointSlider");
-								var output = document.getElementById("points");
-								output.innerHTML = "Max Points: " + slider.value;
-
-								slider.oninput = function() {
-									output.innerHTML = "Max Points: " + this.value;
-								}
-							</script>
 							<button type="submit" id="submit" class="btn btn-dark">Submit</button>
 						</form>
 					</div>
@@ -87,13 +78,22 @@
 							</div>
 							<div class="form-group">
 								<div class="form-group">
-									<label id="points2" for="pointSlider2">Max Points: </label>
+									<label id="points2" for="pointSlider2">Points: </label>
 									<input type="range" min="1" max="100" value="1" class="slider" id="pointSlider2" name="pointSlider2" required>
 								</div>
 								<script>
+									var slider2 = document.getElementById("pointSlider2");
+									var output2 = document.getElementById("points2");
+
 									var slider = document.getElementById("pointSlider");
-									var output = document.getElementById("points2");
+									var output = document.getElementById("points");
+
+									output2.innerHTML = "Points: " + slider2.value;
 									output.innerHTML = "Max Points: " + slider.value;
+
+									slider2.oninput = function() {
+										output2.innerHTML = "Points: " + this.value;
+									}
 
 									slider.oninput = function() {
 										output.innerHTML = "Max Points: " + this.value;
@@ -102,6 +102,18 @@
 							</div>
 							<button type="submit" id="save" class="btn btn-dark">Save</button>
 						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row justify-content-center">
+			<div class="col-sm-6">
+				<div class="card text-center mx-auto">
+					<div class="card-header">
+						<h4>Student Grades</h4>
+					</div>
+					<div class="card-body">
+
 					</div>
 				</div>
 			</div>
