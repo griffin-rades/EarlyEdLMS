@@ -9,7 +9,7 @@
 		<div class="container-fluid">
 			<div class="row justify-content-center">
 				<div class="col-sm-3">
-					<div class="card bg-light text-center mx-auto createStudent">
+					<div class="card text-center mx-auto createStudent">
 						<div class="card-body">
 							<div class="card-header">
 								<h4>Create Student</h4>
@@ -71,7 +71,7 @@
 					</div>
 				</div>
 				<div class="col-sm-3">
-					<div class="card">
+					<div class="card text-center">
 						<div class="card-body">
 							<div class="card-header">
 								<h4>Student Note</h4>
