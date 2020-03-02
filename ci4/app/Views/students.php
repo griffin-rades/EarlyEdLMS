@@ -47,10 +47,10 @@
 				</div>
 				<div class="col-sm-6">
 					<div class="card">
+						<div class="card-header">
+							<h3>All Your Students</h3>
+						</div>
 						<div class="card-body">
-							<div class="card-header">
-								<h3>All Your Students</h3>
-							</div>
 							<div class="container-fluid studentList">
 								<div class="row">
 									<div class="col-6">

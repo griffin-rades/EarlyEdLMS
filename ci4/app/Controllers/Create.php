@@ -39,7 +39,8 @@ class Create extends BaseController{
 		$userName = $this->request->getVar('userName');
 		$firstName = $this->request->getVar('firstName');
 		$lastName = $this->request->getVar('lastName');
-		$classID = rand(1,3);
+
+		$classID = rand(1,3); //pick random number to assign teacher to class.
 
 		if($this->aauth->createUser($userEmail, $userPassword, $userName)){
 			$data['success'] = "The account was successfuly created";
@@ -91,5 +92,43 @@ class Create extends BaseController{
 		$data['studentList'] = $studentInfo;
 
 		return view('students', $data);
+	}
+
+	/**
+	 * create Assignment
+	 *
+	 * Creates an assignment for the class
+	 *
+	 * @return string, array
+	 */
+	function createAssignment(){
+		$data = array();
+		$this->aauth = new Aauth();
+
+		$data['aauth'] = $this->aauth;
+
+		$assignmentData = [
+			'classID' => $this->aauth->getUserVar('classID'),
+			'description' => $this->request->getVar('assignTitle'),
+			'maxPoints' => $this->request->getVar('pointSlider')
+		];
+
+		try{
+			$this->assignmentModel->insert($assignmentData);
+		}catch (\ReflectionException $e){
+
+		}
+
+		$assignmentList = $this->db->query('SELECT description, maxPoints, id FROM assignment WHERE classID = ' . $this->aauth->getUserVar('classID'));
+		$list = $assignmentList->getResult();
+
+		$data['assignList'] = $list;
+
+		$studentNameList = $this->db->query('SELECT lms_students.firstName, lms_students.lastName, lms_students.id, lms_students.info FROM lms_students WHERE lms_students.classID = ' . $this->aauth->getUserVar('classID'));
+		$studentInfo = $studentNameList->getResult();
+
+		$data['studentList'] = $studentInfo;
+
+		return view('grades', $data);
 	}
 }

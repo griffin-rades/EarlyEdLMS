@@ -52,6 +52,11 @@ class BaseController extends Controller
 	protected $studentModel;
 
 	/**
+	 * @var \App\Models\AssignmentModel $assignmentModel
+	 */
+	protected $assignmentModel;
+
+	/**
 	* Constructor.
 	*/
 	public function initController(\CodeIgniter\HTTP\RequestInterface $request, \CodeIgniter\HTTP\ResponseInterface $response, \Psr\Log\LoggerInterface $logger)
@@ -69,6 +74,7 @@ class BaseController extends Controller
 		$this->request = \Config\Services::request();
 		$this->db = \Config\Database::connect();
 		$this->studentModel = new \App\Models\StudentModel();
+		$this->assignmentModel = new \App\Models\AssignmentModel();
 	}
 
 }
