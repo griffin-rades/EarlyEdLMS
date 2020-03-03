@@ -31,14 +31,36 @@ class EditGrades extends BaseController{
 		$assignID = $this->request->getVar('assign');
 		$grade = $this->request->getVar('pointSlider2');
 
-		$gradeData = [
-			'studentID' => $studentID,
-			'classID' => $this->aauth->getUserVar('classID'),
-			'assignmentID' => $assignID,
-			'points' => $grade
-		];
+		$checkID = $this->db->query('SELECT id FROM assignGrade WHERE studentID = ' . "'" . $studentID . "'" . 'AND assignmentID = '."'".$assignID."'");
+		$id = $checkID->getResult();
 
-		$this->gradeModel->save($gradeData);
+		foreach ($id as $row) {
+			 $pKey = $row->id;
+		}
+
+		if($id){
+			$gradeData = [
+				'id' => $pKey,
+				'studentID' => $studentID,
+				'classID' => $this->aauth->getUserVar('classID'),
+				'assignmentID' => $assignID,
+				'points' => $grade
+			];
+
+			$this->gradeModel->save($gradeData);
+		}else{
+			$gradeData = [
+				'studentID' => $studentID,
+				'classID' => $this->aauth->getUserVar('classID'),
+				'assignmentID' => $assignID,
+				'points' => $grade
+			];
+
+			$this->gradeModel->save($gradeData);
+		}
+
+
+
 
 		$studentNameList = $this->db->query('SELECT lms_students.firstName, lms_students.lastName, lms_students.id, lms_students.info FROM lms_students WHERE lms_students.classID = ' . $this->aauth->getUserVar('classID'));
 		$studentInfo = $studentNameList->getResult();
