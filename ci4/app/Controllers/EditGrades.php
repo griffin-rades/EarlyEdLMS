@@ -8,8 +8,9 @@ class EditGrades extends BaseController{
 		$data = array();
 		$this->aauth = new Aauth();
 		$data['aauth'] = $this->aauth;
+		$data['db'] = $this->db;
 
-		$assignmentList = $this->db->query('SELECT description, maxPoints, id FROM assignment WHERE classID = ' . $this->aauth->getUserVar('classID'));
+		$assignmentList = $this->db->query('SELECT description, maxPoints, id, maxPoints FROM assignment WHERE classID = ' . $this->aauth->getUserVar('classID'));
 		$list = $assignmentList->getResult();
 
 		$data['assignList'] = $list;
@@ -26,6 +27,7 @@ class EditGrades extends BaseController{
 		$data = array();
 		$this->aauth = new Aauth();
 		$data['aauth'] = $this->aauth;
+		$data['db'] = $this->db;
 
 		$studentID = $this->request->getVar('studentInfo');
 		$assignID = $this->request->getVar('assign');

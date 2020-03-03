@@ -113,7 +113,17 @@
 						<h4>Student Grades</h4>
 					</div>
 					<div class="card-body">
+						<dl>
+							<?php foreach($this->data['assignList'] as $row){
+								$assignStudent = $this->data['db']->query('SELECT points, firstName, lastName FROM assignGrade JOIN lms_students ON lms_students.id = assignGrade.studentID WHERE assignGrade.assignmentID = ' . $row->id);
+								$assignGrade = $assignStudent->getResult();
 
+								echo "<dt> " .  $row->description . " " . "Max Points: " . $row->maxPoints . "</dt>";
+									foreach($assignGrade as $row2){
+										echo "<dd>" . $row2->firstName . " " . $row2->lastName . " " . "Points: " . $row2->points . " " . "Percent: " . round((($row2->points / $row->maxPoints) * 100), 2) ."</dd>";
+									}
+							}?>
+						</dl>
 					</div>
 				</div>
 			</div>
