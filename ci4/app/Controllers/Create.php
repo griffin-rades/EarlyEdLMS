@@ -104,12 +104,14 @@ class Create extends BaseController{
 	function createAssignment(){
 		$data = array();
 		$this->aauth = new Aauth();
+		$data['db'] = $this->db;
 
 		$data['aauth'] = $this->aauth;
 
 		$assignmentData = [
 			'classID' => $this->aauth->getUserVar('classID'),
-			'description' => $this->request->getVar('assignTitle'),
+			'title' => $this->request->getVar('assignTitle'),
+			'description' => $this->request->getVar('assignDesc'),
 			'maxPoints' => $this->request->getVar('pointSlider')
 		];
 
@@ -119,7 +121,7 @@ class Create extends BaseController{
 
 		}
 
-		$assignmentList = $this->db->query('SELECT description, maxPoints, id FROM assignment WHERE classID = ' . $this->aauth->getUserVar('classID'));
+		$assignmentList = $this->db->query('SELECT title, description, maxPoints, id FROM assignment WHERE classID = ' . $this->aauth->getUserVar('classID'));
 		$list = $assignmentList->getResult();
 
 		$data['assignList'] = $list;

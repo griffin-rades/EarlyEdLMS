@@ -20,6 +20,10 @@
 								<input type="text" name="assignTitle" id="assignTitle" class="form-control" placeholder="Title" required>
 							</div>
 							<div class="form-group">
+								<label for="assignDesc">Assignment Description</label>
+								<input type="text" name="assignDesc" id="assignDesc" class="form-control" placeholder="A short Description" required>
+							</div>
+							<div class="form-group">
 								<label id="points" for="pointSlider">Max Points: </label>
 								<input type="range" min="1" max="100" value="1" class="slider" id="pointSlider" name="pointSlider" required>
 							</div>
@@ -40,12 +44,12 @@
 									<h5 style="text-decoration: underline">Assignment Title</h5>
 								</div>
 								<div class="col-6">
-									<h5 style="text-decoration: underline">Max Points</h5>
+									<h5 style="text-decoration: underline">Description</h5>
 								</div>
 							</div>
 							<?php foreach($this->data['assignList'] as $row){
 								echo "<div class='row'>";
-								echo "<div class='col-6'> " . $row->description . "</div><div class='col-6'>" . $row->maxPoints . "</div>";
+								echo "<div class='col-6'> " . $row->title . "</div><div class='col-6'>" . $row->description . "</div>";
 								echo "</div>";
 							}
 							?>
@@ -69,10 +73,10 @@
 								</select>
 							</div>
 							<div class="form-group">
-								<label for="assign">Choose a student:</label>
+								<label for="assign">Choose an assignment:</label>
 								<select id="assign" size="1" name="assign">
 									<?php foreach($this->data['assignList'] as $row){
-										echo "<option value='$row->id'> " .  $row->description . "</option>";
+										echo "<option value='$row->id'> " .  $row->title . "</option>";
 									}?>
 								</select>
 							</div>
@@ -118,7 +122,7 @@
 								$assignStudent = $this->data['db']->query('SELECT points, firstName, lastName FROM assignGrade JOIN lms_students ON lms_students.id = assignGrade.studentID WHERE assignGrade.assignmentID = ' . $row->id);
 								$assignGrade = $assignStudent->getResult();
 
-								echo "<dt> " .  $row->description . " " . "Max Points: " . $row->maxPoints . "</dt>";
+								echo "<dt> " .  $row->title . " " . "Max Points: " . $row->maxPoints . "</dt>";
 									foreach($assignGrade as $row2){
 										echo "<dd>" . $row2->firstName . " " . $row2->lastName . " " . "Points: " . $row2->points . " " . "Percent: " . round((($row2->points / $row->maxPoints) * 100), 2) ."</dd>";
 									}

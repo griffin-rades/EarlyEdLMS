@@ -9,7 +9,7 @@ class AssignmentModel extends Model{
 	protected $returnType = 'array';
 	protected $useSoftDeletes = true;
 
-	protected $allowedFields = ['classID', 'description', 'maxPoints'];
+	protected $allowedFields = ['classID', 'title', 'description', 'maxPoints'];
 
 	protected $useTimestamps = false;
 	protected $createdField  = 'created_at';
