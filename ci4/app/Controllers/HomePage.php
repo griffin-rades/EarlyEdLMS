@@ -9,7 +9,7 @@ class HomePage extends BaseController{
 		$this->aauth = new Aauth();
 		$data['aauth'] = $this->aauth;
 
-		$studentNameList = $this->db->query('SELECT lms_students.firstName, lms_students.lastName, lms_studentInformation.grade FROM lms_students JOIN lms_studentInformation ON lms_students.id = lms_studentInformation.studentID WHERE lms_students.classID = ' . $this->aauth->getUserVar('classID'));
+		$studentNameList = $this->db->query('SELECT lastName, firstName, (SUM(assignGrade.points)/SUM(assignment.maxPoints)) * 100 AS average FROM assignGrade JOIN lms_students ON assignGrade.studentID = lms_students.id JOIN assignment ON assignGrade.assignmentID = assignment.id WHERE assignGrade.classID = '. "'". $this->aauth->getUserVar('classID') . "'" . 'GROUP BY assignGrade.studentID');
 
 		$query = 'SELECT lms_class.classTitle FROM lms_class WHERE lms_class.id = ';
 		$query .= strVal($this->aauth->getUserVar('classID'));

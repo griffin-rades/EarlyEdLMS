@@ -78,4 +78,3 @@ class EditGrades extends BaseController{
 
 	}
 }
-

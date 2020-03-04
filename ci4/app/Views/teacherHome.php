@@ -35,12 +35,12 @@
 												<h5 style="text-decoration: underline">Name</h5>
 											</div>
 											<div class="col-6">
-												<h5 style="text-decoration: underline">Grade/100</h5>
+												<h5 style="text-decoration: underline">Grade In Class</h5>
 											</div>
 										</div>
 									<?php foreach($this->data['studentNameList'] as $row){
 										echo "<div class='row'>";
-										echo "<div class='col-6'> " . $row->firstName . " " . $row->lastName . "</div><div class='col-6'>" . $row->grade . "</div>";
+										echo "<div class='col-6'> " . $row->firstName . " " . $row->lastName . "</div><div class='col-6'>" . round($row->average,2) . "</div>";
 										echo "</div>";
 									}
 									?>
