@@ -50,7 +50,25 @@
 						<h4>Send Email</h4>
 					</div>
 					<div class="card-body">
-
+						<form method="post" action=<?php echo site_url('sendEmail');?>>
+							<div class="form-group">
+								<label for="recipient">Choose a Recipient:</label>
+								<select id="recipient" size="1" name="recipient">
+									<?php foreach($this->data['parentList'] as $row){
+										echo "<option value='$row->email'> " . $row->firstNameP . " " . $row->lastNameP . "</option>";
+									}?>
+								</select>
+							</div>
+							<div class="form-group">
+								<label for="subject">Email Subject:</label>
+								<input type="text" name="subject" id="subject" required>
+							</div>
+							<div class="form-group">
+								<label for="messageBody">Email Body</label>
+								<textarea name="messageBody" rows="5" cols="50" id="messageBody" class="form-control" required></textarea>
+							</div>
+							<button type="submit" id="send" class="btn btn-dark">Send</button>
+						</form>
 					</div>
 				</div>
 			</div>
@@ -71,7 +89,7 @@
 							</div>
 							<?php foreach($this->data['parentList'] as $row){
 								echo "<div class='row'>";
-								echo "<div class='col-6'> " . $row->firstNameP . $row->lastNameP . "</div><div class='col-6'>" . $row->firstNameS . $row->lastNameS . "</div>";
+								echo "<div class='col-6'> " . $row->firstNameP . " " . $row->lastNameP . "</div><div class='col-6'>" . $row->firstNameS . " " . $row->lastNameS . "</div>";
 								echo "</div>";
 							}
 							?>

@@ -189,7 +189,7 @@ class Create extends BaseController{
 
 		$data['studentList'] = $studentInfo;
 
-		$parentNamesList = $this->db->query('SELECT lms_students.firstName AS firstNameS, lms_students.lastName AS lastNameS, parent.firstName AS firstNameP, parent.lastName AS lastNameP FROM parentStudent JOIN lms_students ON parentStudent.studentID = lms_students.id JOIN parent ON parentStudent.parentID = parent.id WHERE parentStudent.classID = ' . $this->aauth->getUserVar('classID'));
+		$parentNamesList = $this->db->query('SELECT lms_students.firstName AS firstNameS, lms_students.lastName AS lastNameS, parent.firstName AS firstNameP, parent.lastName AS lastNameP, email FROM parentStudent JOIN lms_students ON parentStudent.studentID = lms_students.id JOIN parent ON parentStudent.parentID = parent.id WHERE parentStudent.classID = ' . $this->aauth->getUserVar('classID'));
 		$parentInfo = $parentNamesList->getResult();
 
 		$data['parentList'] = $parentInfo;

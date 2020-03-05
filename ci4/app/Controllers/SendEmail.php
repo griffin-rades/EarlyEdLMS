@@ -2,12 +2,34 @@
 
 use App\Libraries\Aauth;
 
-class ParentInfo extends BaseController{
+class SendEmail extends BaseController{
 
+	/**
+	 * index
+	 *
+	 * log the user out
+	 *
+	 *
+	 * @return string, array
+	 */
 	function index(){
 		$data = array();
 		$this->aauth = new Aauth();
 		$data['aauth'] = $this->aauth;
+
+		$aauthUser = $this->db->query('SELECT email FROM aauth_users WHERE id = ' . "'" . $this->aauth->getUserID() . "'");
+		$aauthUserResult = $aauthUser->getResult();
+
+		foreach ($aauthUserResult as $row){
+			$sender = $row->email;
+		}
+
+		$recipient = $this->request->getVar('recipient');
+		$subject = $this->request->getVar('subject');
+		$senderEmail = $sender;
+		$message = $this->request->getVar('messageBody');
+
+		mail("'" . $recipient . "'", "'" . $subject . "'", "'" . $message . "'", "From: ". "'" . $senderEmail . "'");
 
 		$studentNameList = $this->db->query('SELECT lms_students.firstName, lms_students.lastName, lms_students.id FROM lms_students WHERE lms_students.classID = ' . $this->aauth->getUserVar('classID'));
 		$studentInfo = $studentNameList->getResult();
@@ -18,8 +40,8 @@ class ParentInfo extends BaseController{
 		$parentInfo = $parentNamesList->getResult();
 
 		$data['parentList'] = $parentInfo;
+		$data['sent'] = true;
 
 		return view('parents', $data);
 	}
 }
-
