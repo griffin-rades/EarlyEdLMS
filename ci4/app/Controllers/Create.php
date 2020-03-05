@@ -40,10 +40,10 @@ class Create extends BaseController{
 		$firstName = $this->request->getVar('firstName');
 		$lastName = $this->request->getVar('lastName');
 
-		$classID = rand(1,3); //pick random number to assign teacher to class.
+		$classID = rand(1,5); //pick random number to assign teacher to class.
 
 		if($this->aauth->createUser($userEmail, $userPassword, $userName)){
-			$data['success'] = "The account was successfuly created";
+			$data['success'] = "The account was successfully created";
 			$this->aauth->addMember(4, $this->aauth->getUserId($userEmail));
 			$this->aauth->setUserVar('lastName',$lastName, $this->aauth->getUserId($userEmail));
 			$this->aauth->setUserVar('firstName', $firstName, $this->aauth->getUserId($userEmail));
@@ -95,7 +95,7 @@ class Create extends BaseController{
 	}
 
 	/**
-	 * create Assignment
+	 * createAssignment
 	 *
 	 * Creates an assignment for the class
 	 *
@@ -132,5 +132,68 @@ class Create extends BaseController{
 		$data['studentList'] = $studentInfo;
 
 		return view('grades', $data);
+	}
+
+	/**
+	 * createParent
+	 *
+	 * Creates a new parent and assigns them to their student (s)
+	 *
+	 * @return string, array
+	 */
+	function createParent(){
+		$data = array();
+		$this->aauth = new Aauth();
+		$data['aauth'] = $this->aauth;
+
+		$checkEmail = $this->db->query('SELECT id FROM parent WHERE email = ' . "'" . $this->request->getVar('parentEmail') . "'");
+		$id = $checkEmail->getResult();
+
+		foreach ($id as $row) {
+			$pKey = $row->id;
+		}
+
+		if($pKey){
+
+		}else{
+			$parentData = [
+				'firstName' => $this->request->getVar('firstName'),
+				'lastName' => $this->request->getVar('lastName'),
+				'email' => $this->request->getVar('parentEmail')
+			];
+
+			$this->parentModel->save($parentData);
+
+			$parentEmail = $this->db->query('SELECT id FROM parent WHERE email = ' . "'" .$this->request->getVar('parentEmail') . "'");
+			$parentEmailResult = $parentEmail->getResult();
+
+			foreach($parentEmailResult as $row){
+				$parentID = $row->id;
+			}
+
+			$parentStudentData = [
+				'studentID' => $this->request->getVar('studentInfo'),
+				'parentID' => $parentID,
+				'classID' => $this->aauth->getUserVar('classID')
+			];
+
+			try {
+				$this->parentStudentModel->insert($parentStudentData);
+			}catch(\ReflectionException $e){
+
+			}
+		}
+
+		$studentNameList = $this->db->query('SELECT lms_students.firstName, lms_students.lastName, lms_students.id FROM lms_students WHERE lms_students.classID = ' . $this->aauth->getUserVar('classID'));
+		$studentInfo = $studentNameList->getResult();
+
+		$data['studentList'] = $studentInfo;
+
+		$parentNamesList = $this->db->query('SELECT lms_students.firstName AS firstNameS, lms_students.lastName AS lastNameS, parent.firstName AS firstNameP, parent.lastName AS lastNameP FROM parentStudent JOIN lms_students ON parentStudent.studentID = lms_students.id JOIN parent ON parentStudent.parentID = parent.id WHERE parentStudent.classID = ' . $this->aauth->getUserVar('classID'));
+		$parentInfo = $parentNamesList->getResult();
+
+		$data['parentList'] = $parentInfo;
+
+		return view('parents', $data);
 	}
 }

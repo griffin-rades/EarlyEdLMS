@@ -47,19 +47,19 @@ class BaseController extends Controller
 	protected $db;
 
 	/**
+	 * declare vars for the models
+	 *
 	 * @var \App\Models\StudentModel $studentModel
+	 * @var \App\Models\AssignmentModel $assignmentModel
+	 * @var \App\Models\GradeAssignmentModel $gradeModel
+	 * @var \App\Models\parentModel $parentModel
+	 * @var \App\Models\parentStudentModel $parentStudentModel
 	 */
 	protected $studentModel;
-
-	/**
-	 * @var \App\Models\AssignmentModel $assignmentModel
-	 */
 	protected $assignmentModel;
-
-	/**
-	 * @var \App\Models\GradeAssignmentModel $gradeModel
-	 */
 	protected $gradeModel;
+	protected $parentModel;
+	protected $parentStudentModel;
 
 	/**
 	* Constructor.
@@ -81,6 +81,8 @@ class BaseController extends Controller
 		$this->studentModel = new \App\Models\StudentModel();
 		$this->assignmentModel = new \App\Models\AssignmentModel();
 		$this->gradeModel = new \App\Models\GradeAssignmentModel();
+		$this->parentModel = new \App\Models\parentModel();
+		$this->parentStudentModel = new \App\Models\parentStudentModel();
 	}
 
 }
