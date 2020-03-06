@@ -17,7 +17,6 @@
 								<div class="card-body">
 									<p>Hello: <?php echo $this->data['aauth']->getUserVar('firstName') .  " " . $this->data['aauth']->getUserVar('lastName');?></p>
 									<p>Your Class: <?php foreach($this->data['teacherClass'] as $row){ echo $row->classTitle;} ?></p>
-									<a href="#">Edit Account</a>
 								</div>
 							</div>
 						</div>
