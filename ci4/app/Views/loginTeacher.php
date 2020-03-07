@@ -6,14 +6,14 @@
 </head>
 <body>
     <main>
-		<?php if($this->data['error']):?>
+		<?php if($this->data['errors']):?>
 		<div class="card bg-danger text-center mx-auto errorCard">
 			<div class="card-body">
 				<?php echo $this->data['errors'];?>
 			</div>
 		</div>
 		<?php elseif ($this->data['success']):?>
-			<div class="card bg-danger text-center mx-auto errorCard">
+			<div class="card bg-success text-center mx-auto errorCard">
 				<div class="card-body">
 					<?php echo $this->data['success'];?>
 					<p>Please Login</p>

@@ -47,9 +47,19 @@ class BaseController extends Controller
 	protected $db;
 
 	/**
-	 * @var \App\Models\Lms_userModel $userModel
+	 * declare vars for the models
+	 *
+	 * @var \App\Models\StudentModel $studentModel
+	 * @var \App\Models\AssignmentModel $assignmentModel
+	 * @var \App\Models\GradeAssignmentModel $gradeModel
+	 * @var \App\Models\parentModel $parentModel
+	 * @var \App\Models\parentStudentModel $parentStudentModel
 	 */
-	protected $userModel;
+	protected $studentModel;
+	protected $assignmentModel;
+	protected $gradeModel;
+	protected $parentModel;
+	protected $parentStudentModel;
 
 	/**
 	* Constructor.
@@ -68,7 +78,11 @@ class BaseController extends Controller
 		$this->aauth = new \App\Libraries\Aauth();
 		$this->request = \Config\Services::request();
 		$this->db = \Config\Database::connect();
-		$this->userModel = new \App\Models\Lms_userModel();
+		$this->studentModel = new \App\Models\StudentModel();
+		$this->assignmentModel = new \App\Models\AssignmentModel();
+		$this->gradeModel = new \App\Models\GradeAssignmentModel();
+		$this->parentModel = new \App\Models\parentModel();
+		$this->parentStudentModel = new \App\Models\parentStudentModel();
 	}
 
 }
