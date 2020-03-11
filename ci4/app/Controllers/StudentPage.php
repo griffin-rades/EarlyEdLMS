@@ -4,6 +4,13 @@ use App\Libraries\Aauth;
 
 class StudentPage extends BaseController{
 
+	/**
+	 * index
+	 *
+	 * This is called when the student tab is clicked in the nav bar.
+	 *
+	 * @return string, array
+	 */
 	function index(){
 		$data = array();
 		$this->aauth = new Aauth();
@@ -16,6 +23,14 @@ class StudentPage extends BaseController{
 
 		return view('students', $data);
 	}
+
+	/**
+	 * studentNote
+	 *
+	 * This is called when the teacher submits the form to give a student a note.
+	 *
+	 * @return string, array
+	 */
 	function studentNote(){
 		$data = array();
 		$this->aauth = new Aauth();

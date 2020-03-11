@@ -4,6 +4,13 @@ use App\Libraries\Aauth;
 
 class HomePage extends BaseController{
 
+	/**
+	 * index
+	 *
+	 * This is what displays the teacher home page after the teacher logs in or uses the home tab of the navigation.
+	 *
+	 * @return string, array
+	 */
 	function index(){
 		$data = array();
 		$this->aauth = new Aauth();

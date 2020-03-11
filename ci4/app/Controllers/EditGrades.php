@@ -4,6 +4,13 @@ use App\Libraries\Aauth;
 
 class EditGrades extends BaseController{
 
+	/**
+	 * index
+	 *
+	 * This is called when the user access the grades page from the navigation
+	 *
+	 * @return string, array
+	 */
 	function index(){
 		$data = array();
 		$this->aauth = new Aauth();
@@ -23,6 +30,13 @@ class EditGrades extends BaseController{
 		return view('grades', $data);
 	}
 
+	/**
+	 * gradeStudent
+	 *
+	 * This is called when the teacher is grading a student on an assignment
+	 *
+	 * @return string, array
+	 */
 	function gradeStudent(){
 		$data = array();
 		$this->aauth = new Aauth();
@@ -40,6 +54,7 @@ class EditGrades extends BaseController{
 			 $pKey = $row->id;
 		}
 
+		//if the student already has a grade for that assigment we want to edit that grade instead of making a new grade entry.
 		if($id){
 			$gradeData = [
 				'id' => $pKey,

@@ -32,16 +32,22 @@ class BaseController extends Controller
 	protected $helpers = [];
 
 	/**
+	 * declare session variable
+	 *
 	 * @var \CodeIgniter\Session\SessionInterface $session
 	 */
 	protected $session = null;
 
 	/**
+	 * declare request variable
+	 *
 	 * @var \CodeIgniter\HTTP\Request $request
 	 */
 	protected $request;
 
 	/**
+	 * declare db variable
+	 *
 	 * @var \CodeIgniter\Database\BaseBuilder $db
 	 */
 	protected $db;

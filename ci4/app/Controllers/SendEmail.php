@@ -7,8 +7,7 @@ class SendEmail extends BaseController{
 	/**
 	 * index
 	 *
-	 * log the user out
-	 *
+	 * This is used when the send email form is used. It get the form data and send the email using PHP.
 	 *
 	 * @return string, array
 	 */

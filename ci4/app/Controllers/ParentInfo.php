@@ -3,7 +3,13 @@
 use App\Libraries\Aauth;
 
 class ParentInfo extends BaseController{
-
+	/**
+	 * index
+	 *
+	 * This is called when the parents tab is clicked from the navigation.
+	 *
+	 * @return string, array
+	 */
 	function index(){
 		$data = array();
 		$this->aauth = new Aauth();

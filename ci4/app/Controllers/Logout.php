@@ -7,8 +7,7 @@ class Logout extends BaseController{
 	/**
 	 * index
 	 *
-	 * log the user out
-	 *
+	 * log the current user out
 	 *
 	 * @return string, array
 	 */
