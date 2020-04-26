@@ -1,2 +1,5 @@
 The server hosting the website is no longer active. This was my final project for my Web Development 2 class.
-This project was built using the CodeIgniter 4 framework along with AAuth for user authentication. 
+This project was built using the CodeIgniter 4 framework along with AAuth for user authentication. EarlyEdLMS was designed to 
+be used by teachers of elementry school age kids or younger. The teacher are the only ones with access to view their class. They
+can add notes about each student, add students to their class, grade and create assignemnts for each student, 
+or message the student parents.
